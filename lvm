@@ -301,4 +301,8 @@ drwxr-xr-x 23 root root  4096 Jun 25 12:44 ..
 -rw-r--r--  1 root root     0 Jun 25 16:19 file8
 -rw-r--r--  1 root root     0 Jun 25 16:19 file9
 drwx------  2 root root 16384 Jun 25 16:18 lost+found
+root@ideal:~# df -h | grep -E 'home|var|/$'
+/dev/mapper/ubuntu--vg-ubuntu--lv   7.8G  4.5G  3.0G  61% /
+/dev/mapper/vg_var-lv_var           919M  447M  409M  53% /var
+/dev/mapper/ubuntu--vg-LogVol_Home  2.0G  104K  1.8G   1% /home
 drwxr-x---  6 vs   vs    4096 Jun 25 15:40 vs
