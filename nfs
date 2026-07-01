@@ -2,3 +2,41 @@ vs@ideal:~$ sudo -i
 [sudo] password for vs:
 ####### Устанавливаем NFS сервер
 root@ideal:~# apt install nfs-kernel-server
+
+root@ideal:~# ss -tnplu
+Netid      State       Recv-Q      Send-Q                   Local Address:Port              Peer Address:Port      Process
+udp        UNCONN      0           0                              0.0.0.0:55785                  0.0.0.0:*          users:(("rpc.mountd",pid=2320,fd=12))
+udp        UNCONN      0           0                            127.0.0.1:789                    0.0.0.0:*          users:(("rpc.statd",pid=2309,fd=5))
+udp        UNCONN      0           0                              0.0.0.0:39770                  0.0.0.0:*          users:(("rpc.mountd",pid=2320,fd=4))
+udp        UNCONN      0           0                              0.0.0.0:60406                  0.0.0.0:*
+udp        UNCONN      0           0                              0.0.0.0:56472                  0.0.0.0:*          users:(("rpc.statd",pid=2309,fd=8))
+udp        UNCONN      0           0                              0.0.0.0:33997                  0.0.0.0:*          users:(("rpc.mountd",pid=2320,fd=8))
+udp        UNCONN      0           0                           127.0.0.54:53                     0.0.0.0:*          users:(("systemd-resolve",pid=1003,fd=16))
+udp        UNCONN      0           0                        127.0.0.53%lo:53                     0.0.0.0:*          users:(("systemd-resolve",pid=1003,fd=14))
+udp        UNCONN      0           0                192.168.56.102%enp0s8:68                     0.0.0.0:*          users:(("systemd-network",pid=972,fd=19))
+udp        UNCONN      0           0                     10.0.2.15%enp0s3:68                     0.0.0.0:*          users:(("systemd-network",pid=972,fd=23))
+udp        UNCONN      0           0                              0.0.0.0:111                    0.0.0.0:*          users:(("rpcbind",pid=1798,fd=5),("systemd",pid=1,fd=237))
+udp        UNCONN      0           0                                 [::]:33408                     [::]:*          users:(("rpc.mountd",pid=2320,fd=10))
+udp        UNCONN      0           0                                 [::]:60048                     [::]:*          users:(("rpc.mountd",pid=2320,fd=6))
+udp        UNCONN      0           0                                 [::]:48127                     [::]:*          users:(("rpc.mountd",pid=2320,fd=14))
+udp        UNCONN      0           0                                 [::]:54844                     [::]:*          users:(("rpc.statd",pid=2309,fd=10))
+udp        UNCONN      0           0                                 [::]:42722                     [::]:*
+udp        UNCONN      0           0                                 [::]:111                       [::]:*          users:(("rpcbind",pid=1798,fd=7),("systemd",pid=1,fd=239))
+tcp        LISTEN      0           4096                           0.0.0.0:38391                  0.0.0.0:*          users:(("rpc.mountd",pid=2320,fd=5))
+tcp        LISTEN      0           4096                           0.0.0.0:50227                  0.0.0.0:*          users:(("rpc.mountd",pid=2320,fd=13))
+tcp        LISTEN      0           4096                     127.0.0.53%lo:53                     0.0.0.0:*          users:(("systemd-resolve",pid=1003,fd=15))
+tcp        LISTEN      0           4096                           0.0.0.0:44797                  0.0.0.0:*          users:(("rpc.statd",pid=2309,fd=9))
+tcp        LISTEN      0           64                             0.0.0.0:45363                  0.0.0.0:*
+tcp        LISTEN      0           4096                           0.0.0.0:35315                  0.0.0.0:*          users:(("rpc.mountd",pid=2320,fd=9))
+tcp        LISTEN      0           64                             0.0.0.0:2049                   0.0.0.0:*
+tcp        LISTEN      0           4096                           0.0.0.0:22                     0.0.0.0:*          users:(("sshd",pid=1477,fd=3),("systemd",pid=1,fd=240))
+tcp        LISTEN      0           4096                           0.0.0.0:111                    0.0.0.0:*          users:(("rpcbind",pid=1798,fd=4),("systemd",pid=1,fd=236))
+tcp        LISTEN      0           4096                        127.0.0.54:53                     0.0.0.0:*          users:(("systemd-resolve",pid=1003,fd=17))
+tcp        LISTEN      0           4096                              [::]:58441                     [::]:*          users:(("rpc.mountd",pid=2320,fd=11))
+tcp        LISTEN      0           64                                [::]:33993                     [::]:*
+tcp        LISTEN      0           4096                              [::]:48761                     [::]:*          users:(("rpc.mountd",pid=2320,fd=15))
+tcp        LISTEN      0           4096                              [::]:47423                     [::]:*          users:(("rpc.statd",pid=2309,fd=11))
+tcp        LISTEN      0           4096                              [::]:49663                     [::]:*          users:(("rpc.mountd",pid=2320,fd=7))
+tcp        LISTEN      0           64                                [::]:2049                      [::]:*
+tcp        LISTEN      0           4096                              [::]:22                        [::]:*          users:(("sshd",pid=1477,fd=4),("systemd",pid=1,fd=241))
+tcp        LISTEN      0           4096                              [::]:111                       [::]:*          users:(("rpcbind",pid=1798,fd=6),("systemd",pid=1,fd=238))
