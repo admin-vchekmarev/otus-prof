@@ -1,0 +1,4 @@
+vs@ideal:~$ sudo -i
+[sudo] password for vs:
+####### Устанавливаем NFS сервер
+root@ideal:~# apt install nfs-kernel-server
