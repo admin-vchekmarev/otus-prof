@@ -1,1 +1,1186 @@
+################### установка Linux и пакетов
+[vs@localhost ~]$ hostnamectl
+   Static hostname: (unset)
+Transient hostname: localhost
+         Icon name: computer-vm
+           Chassis: vm 🖴
+        Machine ID: 91e96b66de4843e88f740a92761c6fc1
+           Boot ID: ca08450cd8f94c35bb8fc06005ebd5d4
+    Virtualization: oracle
+  Operating System: AlmaLinux 9.8 (Olive Jaguar)
+       CPE OS Name: cpe:/o:almalinux:almalinux:9::baseos
+            Kernel: Linux 5.14.0-687.5.3.el9_8.x86_64
+      Architecture: x86-64
+   Hardware Vendor: innotek GmbH
+    Hardware Model: VirtualBox
+  Firmware Version: VirtualBox
+[vs@localhost ~]$ yum install -y wget rpmdevtools rpm-build createrepo \
+ yum-utils cmake gcc git nano
+Error: This command has to be run with superuser privileges (under the root user on most systems).
+[vs@localhost ~]$ sudo yum install -y wget rpmdevtools rpm-build createrepo \
+ yum-utils cmake gcc git nano
+[sudo] password for vs:
+Last metadata expiration check: 0:05:05 ago on Wed Jul  1 16:33:22 2026.
+Dependencies resolved.
+===================================================================================================================
+ Package                          Architecture      Version                             Repository            Size
+===================================================================================================================
+Installing:
+ cmake                            x86_64            3.31.8-3.el9                        appstream             13 M
+ createrepo_c                     x86_64            0.20.1-4.el9                        appstream             71 k
+ gcc                              x86_64            11.5.0-14.el9.alma.1                appstream             32 M
+ git                              x86_64            2.52.0-1.el9                        appstream             39 k
+ nano                             x86_64            5.6.1-7.el9                         baseos               692 k
+ rpm-build                        x86_64            4.16.1.3-40.el9                     appstream             58 k
+ rpmdevtools                      noarch            9.5-1.el9                           appstream             75 k
+ wget                             x86_64            1.21.1-8.el9_4                      appstream            768 k
+ yum-utils                        noarch            4.3.0-26.el9                        baseos                34 k
+Installing dependencies:
+ annobin                          x86_64            12.98-2.el9                         appstream            1.1 M
+ bzip2                            x86_64            1.0.8-11.el9                        baseos                51 k
+ cmake-data                       noarch            3.31.8-3.el9                        appstream            1.9 M
+ cmake-filesystem                 x86_64            3.31.8-3.el9                        appstream             11 k
+ cmake-rpm-macros                 noarch            3.31.8-3.el9                        appstream             10 k
+ cpp                              x86_64            11.5.0-14.el9.alma.1                appstream             11 M
+ createrepo_c-libs                x86_64            0.20.1-4.el9                        appstream             97 k
+ debugedit                        x86_64            5.0-11.el9                          appstream             76 k
+ dwz                              x86_64            0.16-1.el9                          appstream            133 k
+ ed                               x86_64            1.14.2-12.el9                       baseos                74 k
+ efi-srpm-macros                  noarch            6-4.el9                             appstream             21 k
+ elfutils                         x86_64            0.194-1.el9.alma.1                  baseos               592 k
+ emacs-filesystem                 noarch            1:27.2-18.el9                       appstream            8.2 k
+ fonts-srpm-macros                noarch            1:2.0.5-7.el9.1                     appstream             27 k
+ gcc-plugin-annobin               x86_64            11.5.0-14.el9.alma.1                appstream             36 k
+ gdb-minimal                      x86_64            16.3-3.el9                          appstream            4.4 M
+ ghc-srpm-macros                  noarch            1.5.0-6.el9                         appstream            7.8 k
+ git-core                         x86_64            2.52.0-1.el9                        appstream            5.0 M
+ git-core-doc                     noarch            2.52.0-1.el9                        appstream            2.8 M
+ glibc-devel                      x86_64            2.34-266.el9_8                      appstream             37 k
+ glibc-headers                    x86_64            2.34-266.el9_8                      appstream            443 k
+ go-srpm-macros                   noarch            3.8.1-1.el9                         appstream             27 k
+ info                             x86_64            6.7-15.el9                          baseos               224 k
+ kernel-headers                   x86_64            5.14.0-687.19.1.el9_8               appstream            1.6 M
+ kernel-srpm-macros               noarch            1.0-14.el9                          appstream             14 k
+ libmpc                           x86_64            1.2.1-4.el9                         appstream             61 k
+ libpkgconf                       x86_64            1.7.3-10.el9                        baseos                35 k
+ libuv                            x86_64            1:1.42.0-2.el9_4                    appstream            146 k
+ libxcrypt-devel                  x86_64            4.4.18-3.el9                        appstream             28 k
+ llvm-filesystem                  x86_64            21.1.8-2.el9                        appstream             13 k
+ llvm-libs                        x86_64            21.1.8-2.el9                        appstream             31 M
+ lua-srpm-macros                  noarch            1-6.el9                             appstream            8.4 k
+ make                             x86_64            1:4.3-8.el9                         baseos               530 k
+ ocaml-srpm-macros                noarch            6-6.el9                             appstream            7.7 k
+ openblas-srpm-macros             noarch            2-11.el9                            appstream            7.3 k
+ patch                            x86_64            2.7.6-16.el9                        appstream            127 k
+ perl-DynaLoader                  x86_64            1.47-481.1.el9_6                    appstream             24 k
+ perl-Error                       noarch            1:0.17029-7.el9                     appstream             41 k
+ perl-Git                         noarch            2.52.0-1.el9                        appstream             37 k
+ perl-TermReadKey                 x86_64            2.38-11.el9                         appstream             36 k
+ perl-lib                         x86_64            0.65-481.1.el9_6                    appstream             13 k
+ perl-srpm-macros                 noarch            1-41.el9                            appstream            8.1 k
+ pkgconf                          x86_64            1.7.3-10.el9                        baseos                40 k
+ pkgconf-m4                       noarch            1.7.3-10.el9                        baseos                14 k
+ pkgconf-pkg-config               x86_64            1.7.3-10.el9                        baseos               9.9 k
+ pyproject-srpm-macros            noarch            1.18.5-1.el9                        appstream             12 k
+ python-srpm-macros               noarch            3.9-54.el9                          appstream             16 k
+ python3-argcomplete              noarch            1.12.0-5.el9                        appstream             61 k
+ python3-chardet                  noarch            4.0.0-5.el9                         baseos               209 k
+ python3-idna                     noarch            2.10-7.el9_4.1                      baseos                96 k
+ python3-pysocks                  noarch            1.7.1-12.el9                        baseos                34 k
+ python3-requests                 noarch            2.25.1-10.el9_6                     baseos               115 k
+ python3-urllib3                  noarch            1.26.5-8.el9_8                      baseos               191 k
+ qt5-srpm-macros                  noarch            5.15.9-1.el9                        appstream            7.8 k
+ redhat-rpm-config                noarch            210-1.el9.alma.1                    appstream             64 k
+ rust-srpm-macros                 noarch            17-4.el9                            appstream            9.2 k
+ tar                              x86_64            2:1.34-11.el9                       baseos               876 k
+ unzip                            x86_64            6.0-60.el9                          baseos               180 k
+ vim-filesystem                   noarch            2:8.2.2637-26.el9_8.6               baseos                11 k
+ zip                              x86_64            3.0-35.el9                          baseos               263 k
+ zstd                             x86_64            1.5.5-1.el9                         baseos               462 k
 
+Transaction Summary
+===================================================================================================================
+Install  70 Packages
+
+Total download size: 111 M
+Installed size: 375 M
+Downloading Packages:
+(1/70): annobin-12.98-2.el9.x86_64.rpm                                             1.3 MB/s | 1.1 MB     00:00
+(2/70): cmake-filesystem-3.31.8-3.el9.x86_64.rpm                                    84 kB/s |  11 kB     00:00
+(3/70): cmake-data-3.31.8-3.el9.noarch.rpm                                         1.7 MB/s | 1.9 MB     00:01
+(4/70): cmake-rpm-macros-3.31.8-3.el9.noarch.rpm                                    64 kB/s |  10 kB     00:00
+(5/70): createrepo_c-0.20.1-4.el9.x86_64.rpm                                       254 kB/s |  71 kB     00:00
+(6/70): createrepo_c-libs-0.20.1-4.el9.x86_64.rpm                                  441 kB/s |  97 kB     00:00
+(7/70): debugedit-5.0-11.el9.x86_64.rpm                                            297 kB/s |  76 kB     00:00
+(8/70): dwz-0.16-1.el9.x86_64.rpm                                                  439 kB/s | 133 kB     00:00
+(9/70): efi-srpm-macros-6-4.el9.noarch.rpm                                         123 kB/s |  21 kB     00:00
+(10/70): emacs-filesystem-27.2-18.el9.noarch.rpm                                    65 kB/s | 8.2 kB     00:00
+(11/70): fonts-srpm-macros-2.0.5-7.el9.1.noarch.rpm                                137 kB/s |  27 kB     00:00
+(12/70): cmake-3.31.8-3.el9.x86_64.rpm                                             3.4 MB/s |  13 MB     00:03
+(13/70): gcc-plugin-annobin-11.5.0-14.el9.alma.1.x86_64.rpm                        237 kB/s |  36 kB     00:00
+(14/70): cpp-11.5.0-14.el9.alma.1.x86_64.rpm                                       3.0 MB/s |  11 MB     00:03
+(15/70): ghc-srpm-macros-1.5.0-6.el9.noarch.rpm                                     62 kB/s | 7.8 kB     00:00
+(16/70): git-2.52.0-1.el9.x86_64.rpm                                               179 kB/s |  39 kB     00:00
+(17/70): gdb-minimal-16.3-3.el9.x86_64.rpm                                         2.6 MB/s | 4.4 MB     00:01
+(18/70): git-core-doc-2.52.0-1.el9.noarch.rpm                                      2.5 MB/s | 2.8 MB     00:01
+(19/70): git-core-2.52.0-1.el9.x86_64.rpm                                          2.4 MB/s | 5.0 MB     00:02
+(20/70): glibc-devel-2.34-266.el9_8.x86_64.rpm                                     135 kB/s |  37 kB     00:00
+(21/70): go-srpm-macros-3.8.1-1.el9.noarch.rpm                                     140 kB/s |  27 kB     00:00
+(22/70): kernel-headers-5.14.0-687.19.1.el9_8.x86_64.rpm                           1.5 MB/s | 1.6 MB     00:01
+(23/70): kernel-srpm-macros-1.0-14.el9.noarch.rpm                                   84 kB/s |  14 kB     00:00
+(24/70): libmpc-1.2.1-4.el9.x86_64.rpm                                             312 kB/s |  61 kB     00:00
+(25/70): libuv-1.42.0-2.el9_4.x86_64.rpm                                           453 kB/s | 146 kB     00:00
+(26/70): libxcrypt-devel-4.4.18-3.el9.x86_64.rpm                                   110 kB/s |  28 kB     00:00
+(27/70): llvm-filesystem-21.1.8-2.el9.x86_64.rpm                                   104 kB/s |  13 kB     00:00
+(28/70): glibc-headers-2.34-266.el9_8.x86_64.rpm                                   131 kB/s | 443 kB     00:03
+(29/70): lua-srpm-macros-1-6.el9.noarch.rpm                                         63 kB/s | 8.4 kB     00:00
+(30/70): ocaml-srpm-macros-6-6.el9.noarch.rpm                                       60 kB/s | 7.7 kB     00:00
+(31/70): openblas-srpm-macros-2-11.el9.noarch.rpm                                   58 kB/s | 7.3 kB     00:00
+(32/70): patch-2.7.6-16.el9.x86_64.rpm                                             316 kB/s | 127 kB     00:00
+(33/70): perl-DynaLoader-1.47-481.1.el9_6.x86_64.rpm                               151 kB/s |  24 kB     00:00
+(34/70): perl-Error-0.17029-7.el9.noarch.rpm                                       163 kB/s |  41 kB     00:00
+(35/70): perl-Git-2.52.0-1.el9.noarch.rpm                                          191 kB/s |  37 kB     00:00
+(36/70): gcc-11.5.0-14.el9.alma.1.x86_64.rpm                                       3.4 MB/s |  32 MB     00:09
+(37/70): perl-TermReadKey-2.38-11.el9.x86_64.rpm                                   122 kB/s |  36 kB     00:00
+(38/70): perl-srpm-macros-1-41.el9.noarch.rpm                                       60 kB/s | 8.1 kB     00:00
+(39/70): perl-lib-0.65-481.1.el9_6.x86_64.rpm                                       84 kB/s |  13 kB     00:00
+(40/70): pyproject-srpm-macros-1.18.5-1.el9.noarch.rpm                              89 kB/s |  12 kB     00:00
+(41/70): python-srpm-macros-3.9-54.el9.noarch.rpm                                  106 kB/s |  16 kB     00:00
+(42/70): qt5-srpm-macros-5.15.9-1.el9.noarch.rpm                                    47 kB/s | 7.8 kB     00:00
+(43/70): python3-argcomplete-1.12.0-5.el9.noarch.rpm                               156 kB/s |  61 kB     00:00
+(44/70): redhat-rpm-config-210-1.el9.alma.1.noarch.rpm                             153 kB/s |  64 kB     00:00
+(45/70): rpm-build-4.16.1.3-40.el9.x86_64.rpm                                      132 kB/s |  58 kB     00:00
+(46/70): rust-srpm-macros-17-4.el9.noarch.rpm                                       67 kB/s | 9.2 kB     00:00
+(47/70): rpmdevtools-9.5-1.el9.noarch.rpm                                          125 kB/s |  75 kB     00:00
+(48/70): bzip2-1.0.8-11.el9.x86_64.rpm                                             156 kB/s |  51 kB     00:00
+(49/70): ed-1.14.2-12.el9.x86_64.rpm                                               291 kB/s |  74 kB     00:00
+(50/70): wget-1.21.1-8.el9_4.x86_64.rpm                                            708 kB/s | 768 kB     00:01
+(51/70): info-6.7-15.el9.x86_64.rpm                                                446 kB/s | 224 kB     00:00
+(52/70): elfutils-0.194-1.el9.alma.1.x86_64.rpm                                    756 kB/s | 592 kB     00:00
+(53/70): libpkgconf-1.7.3-10.el9.x86_64.rpm                                        229 kB/s |  35 kB     00:00
+(54/70): make-4.3-8.el9.x86_64.rpm                                                 780 kB/s | 530 kB     00:00
+(55/70): pkgconf-1.7.3-10.el9.x86_64.rpm                                           190 kB/s |  40 kB     00:00
+(56/70): pkgconf-m4-1.7.3-10.el9.noarch.rpm                                         94 kB/s |  14 kB     00:00
+(57/70): pkgconf-pkg-config-1.7.3-10.el9.x86_64.rpm                                 71 kB/s | 9.9 kB     00:00
+(58/70): nano-5.6.1-7.el9.x86_64.rpm                                               574 kB/s | 692 kB     00:01
+(59/70): python3-idna-2.10-7.el9_4.1.noarch.rpm                                    202 kB/s |  96 kB     00:00
+(60/70): python3-pysocks-1.7.1-12.el9.noarch.rpm                                   140 kB/s |  34 kB     00:00
+(61/70): python3-chardet-4.0.0-5.el9.noarch.rpm                                    230 kB/s | 209 kB     00:00
+(62/70): python3-requests-2.25.1-10.el9_6.noarch.rpm                               186 kB/s | 115 kB     00:00
+(63/70): python3-urllib3-1.26.5-8.el9_8.noarch.rpm                                 201 kB/s | 191 kB     00:00
+(64/70): unzip-6.0-60.el9.x86_64.rpm                                               393 kB/s | 180 kB     00:00
+(65/70): vim-filesystem-8.2.2637-26.el9_8.6.noarch.rpm                              69 kB/s |  11 kB     00:00
+(66/70): tar-1.34-11.el9.x86_64.rpm                                                800 kB/s | 876 kB     00:01
+(67/70): yum-utils-4.3.0-26.el9.noarch.rpm                                         104 kB/s |  34 kB     00:00
+(68/70): zip-3.0-35.el9.x86_64.rpm                                                 435 kB/s | 263 kB     00:00
+(69/70): zstd-1.5.5-1.el9.x86_64.rpm                                               743 kB/s | 462 kB     00:00
+(70/70): llvm-libs-21.1.8-2.el9.x86_64.rpm                                         2.4 MB/s |  31 MB     00:13
+-------------------------------------------------------------------------------------------------------------------
+Total                                                                              4.7 MB/s | 111 MB     00:23
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                           1/1
+  Installing       : unzip-6.0-60.el9.x86_64                                                                  1/70
+  Installing       : python3-idna-2.10-7.el9_4.1.noarch                                                       2/70
+  Installing       : make-1:4.3-8.el9.x86_64                                                                  3/70
+  Installing       : elfutils-0.194-1.el9.alma.1.x86_64                                                       4/70
+  Installing       : libmpc-1.2.1-4.el9.x86_64                                                                5/70
+  Installing       : git-core-2.52.0-1.el9.x86_64                                                             6/70
+  Installing       : gdb-minimal-16.3-3.el9.x86_64                                                            7/70
+  Installing       : emacs-filesystem-1:27.2-18.el9.noarch                                                    8/70
+  Installing       : dwz-0.16-1.el9.x86_64                                                                    9/70
+  Installing       : cmake-rpm-macros-3.31.8-3.el9.noarch                                                    10/70
+  Installing       : cmake-filesystem-3.31.8-3.el9.x86_64                                                    11/70
+  Installing       : debugedit-5.0-11.el9.x86_64                                                             12/70
+  Installing       : git-core-doc-2.52.0-1.el9.noarch                                                        13/70
+  Installing       : cpp-11.5.0-14.el9.alma.1.x86_64                                                         14/70
+  Installing       : zip-3.0-35.el9.x86_64                                                                   15/70
+  Installing       : zstd-1.5.5-1.el9.x86_64                                                                 16/70
+  Installing       : vim-filesystem-2:8.2.2637-26.el9_8.6.noarch                                             17/70
+  Installing       : tar-2:1.34-11.el9.x86_64                                                                18/70
+  Installing       : python3-pysocks-1.7.1-12.el9.noarch                                                     19/70
+  Installing       : python3-urllib3-1.26.5-8.el9_8.noarch                                                   20/70
+  Installing       : python3-chardet-4.0.0-5.el9.noarch                                                      21/70
+  Installing       : python3-requests-2.25.1-10.el9_6.noarch                                                 22/70
+  Installing       : pkgconf-m4-1.7.3-10.el9.noarch                                                          23/70
+  Installing       : libpkgconf-1.7.3-10.el9.x86_64                                                          24/70
+  Installing       : pkgconf-1.7.3-10.el9.x86_64                                                             25/70
+  Installing       : pkgconf-pkg-config-1.7.3-10.el9.x86_64                                                  26/70
+  Installing       : info-6.7-15.el9.x86_64                                                                  27/70
+  Installing       : ed-1.14.2-12.el9.x86_64                                                                 28/70
+  Installing       : patch-2.7.6-16.el9.x86_64                                                               29/70
+  Installing       : bzip2-1.0.8-11.el9.x86_64                                                               30/70
+  Installing       : rust-srpm-macros-17-4.el9.noarch                                                        31/70
+  Installing       : qt5-srpm-macros-5.15.9-1.el9.noarch                                                     32/70
+  Installing       : python3-argcomplete-1.12.0-5.el9.noarch                                                 33/70
+  Installing       : perl-srpm-macros-1-41.el9.noarch                                                        34/70
+  Installing       : perl-lib-0.65-481.1.el9_6.x86_64                                                        35/70
+  Installing       : perl-Error-1:0.17029-7.el9.noarch                                                       36/70
+  Installing       : perl-DynaLoader-1.47-481.1.el9_6.x86_64                                                 37/70
+  Installing       : perl-TermReadKey-2.38-11.el9.x86_64                                                     38/70
+  Installing       : perl-Git-2.52.0-1.el9.noarch                                                            39/70
+  Installing       : git-2.52.0-1.el9.x86_64                                                                 40/70
+  Installing       : openblas-srpm-macros-2-11.el9.noarch                                                    41/70
+  Installing       : ocaml-srpm-macros-6-6.el9.noarch                                                        42/70
+  Installing       : lua-srpm-macros-1-6.el9.noarch                                                          43/70
+  Installing       : llvm-filesystem-21.1.8-2.el9.x86_64                                                     44/70
+  Installing       : llvm-libs-21.1.8-2.el9.x86_64                                                           45/70
+  Installing       : libuv-1:1.42.0-2.el9_4.x86_64                                                           46/70
+  Installing       : cmake-data-3.31.8-3.el9.noarch                                                          47/70
+  Installing       : cmake-3.31.8-3.el9.x86_64                                                               48/70
+  Installing       : kernel-srpm-macros-1.0-14.el9.noarch                                                    49/70
+  Installing       : kernel-headers-5.14.0-687.19.1.el9_8.x86_64                                             50/70
+  Installing       : glibc-headers-2.34-266.el9_8.x86_64                                                     51/70
+  Installing       : libxcrypt-devel-4.4.18-3.el9.x86_64                                                     52/70
+  Installing       : glibc-devel-2.34-266.el9_8.x86_64                                                       53/70
+  Installing       : gcc-11.5.0-14.el9.alma.1.x86_64                                                         54/70
+  Installing       : annobin-12.98-2.el9.x86_64                                                              55/70
+  Installing       : gcc-plugin-annobin-11.5.0-14.el9.alma.1.x86_64                                          56/70
+  Installing       : ghc-srpm-macros-1.5.0-6.el9.noarch                                                      57/70
+  Installing       : efi-srpm-macros-6-4.el9.noarch                                                          58/70
+  Installing       : fonts-srpm-macros-1:2.0.5-7.el9.1.noarch                                                59/70
+  Installing       : go-srpm-macros-3.8.1-1.el9.noarch                                                       60/70
+  Installing       : python-srpm-macros-3.9-54.el9.noarch                                                    61/70
+  Installing       : pyproject-srpm-macros-1.18.5-1.el9.noarch                                               62/70
+  Installing       : redhat-rpm-config-210-1.el9.alma.1.noarch                                               63/70
+  Running scriptlet: redhat-rpm-config-210-1.el9.alma.1.noarch                                               63/70
+  Installing       : rpm-build-4.16.1.3-40.el9.x86_64                                                        64/70
+  Installing       : createrepo_c-libs-0.20.1-4.el9.x86_64                                                   65/70
+  Installing       : createrepo_c-0.20.1-4.el9.x86_64                                                        66/70
+  Installing       : rpmdevtools-9.5-1.el9.noarch                                                            67/70
+  Installing       : yum-utils-4.3.0-26.el9.noarch                                                           68/70
+  Installing       : nano-5.6.1-7.el9.x86_64                                                                 69/70
+  Installing       : wget-1.21.1-8.el9_4.x86_64                                                              70/70
+  Running scriptlet: wget-1.21.1-8.el9_4.x86_64                                                              70/70
+  Verifying        : annobin-12.98-2.el9.x86_64                                                               1/70
+  Verifying        : cmake-3.31.8-3.el9.x86_64                                                                2/70
+  Verifying        : cmake-data-3.31.8-3.el9.noarch                                                           3/70
+  Verifying        : cmake-filesystem-3.31.8-3.el9.x86_64                                                     4/70
+  Verifying        : cmake-rpm-macros-3.31.8-3.el9.noarch                                                     5/70
+  Verifying        : cpp-11.5.0-14.el9.alma.1.x86_64                                                          6/70
+  Verifying        : createrepo_c-0.20.1-4.el9.x86_64                                                         7/70
+  Verifying        : createrepo_c-libs-0.20.1-4.el9.x86_64                                                    8/70
+  Verifying        : debugedit-5.0-11.el9.x86_64                                                              9/70
+  Verifying        : dwz-0.16-1.el9.x86_64                                                                   10/70
+  Verifying        : efi-srpm-macros-6-4.el9.noarch                                                          11/70
+  Verifying        : emacs-filesystem-1:27.2-18.el9.noarch                                                   12/70
+  Verifying        : fonts-srpm-macros-1:2.0.5-7.el9.1.noarch                                                13/70
+  Verifying        : gcc-11.5.0-14.el9.alma.1.x86_64                                                         14/70
+  Verifying        : gcc-plugin-annobin-11.5.0-14.el9.alma.1.x86_64                                          15/70
+  Verifying        : gdb-minimal-16.3-3.el9.x86_64                                                           16/70
+  Verifying        : ghc-srpm-macros-1.5.0-6.el9.noarch                                                      17/70
+  Verifying        : git-2.52.0-1.el9.x86_64                                                                 18/70
+  Verifying        : git-core-2.52.0-1.el9.x86_64                                                            19/70
+  Verifying        : git-core-doc-2.52.0-1.el9.noarch                                                        20/70
+  Verifying        : glibc-devel-2.34-266.el9_8.x86_64                                                       21/70
+  Verifying        : glibc-headers-2.34-266.el9_8.x86_64                                                     22/70
+  Verifying        : go-srpm-macros-3.8.1-1.el9.noarch                                                       23/70
+  Verifying        : kernel-headers-5.14.0-687.19.1.el9_8.x86_64                                             24/70
+  Verifying        : kernel-srpm-macros-1.0-14.el9.noarch                                                    25/70
+  Verifying        : libmpc-1.2.1-4.el9.x86_64                                                               26/70
+  Verifying        : libuv-1:1.42.0-2.el9_4.x86_64                                                           27/70
+  Verifying        : libxcrypt-devel-4.4.18-3.el9.x86_64                                                     28/70
+  Verifying        : llvm-filesystem-21.1.8-2.el9.x86_64                                                     29/70
+  Verifying        : llvm-libs-21.1.8-2.el9.x86_64                                                           30/70
+  Verifying        : lua-srpm-macros-1-6.el9.noarch                                                          31/70
+  Verifying        : ocaml-srpm-macros-6-6.el9.noarch                                                        32/70
+  Verifying        : openblas-srpm-macros-2-11.el9.noarch                                                    33/70
+  Verifying        : patch-2.7.6-16.el9.x86_64                                                               34/70
+  Verifying        : perl-DynaLoader-1.47-481.1.el9_6.x86_64                                                 35/70
+  Verifying        : perl-Error-1:0.17029-7.el9.noarch                                                       36/70
+  Verifying        : perl-Git-2.52.0-1.el9.noarch                                                            37/70
+  Verifying        : perl-TermReadKey-2.38-11.el9.x86_64                                                     38/70
+  Verifying        : perl-lib-0.65-481.1.el9_6.x86_64                                                        39/70
+  Verifying        : perl-srpm-macros-1-41.el9.noarch                                                        40/70
+  Verifying        : pyproject-srpm-macros-1.18.5-1.el9.noarch                                               41/70
+  Verifying        : python-srpm-macros-3.9-54.el9.noarch                                                    42/70
+  Verifying        : python3-argcomplete-1.12.0-5.el9.noarch                                                 43/70
+  Verifying        : qt5-srpm-macros-5.15.9-1.el9.noarch                                                     44/70
+  Verifying        : redhat-rpm-config-210-1.el9.alma.1.noarch                                               45/70
+  Verifying        : rpm-build-4.16.1.3-40.el9.x86_64                                                        46/70
+  Verifying        : rpmdevtools-9.5-1.el9.noarch                                                            47/70
+  Verifying        : rust-srpm-macros-17-4.el9.noarch                                                        48/70
+  Verifying        : wget-1.21.1-8.el9_4.x86_64                                                              49/70
+  Verifying        : bzip2-1.0.8-11.el9.x86_64                                                               50/70
+  Verifying        : ed-1.14.2-12.el9.x86_64                                                                 51/70
+  Verifying        : elfutils-0.194-1.el9.alma.1.x86_64                                                      52/70
+  Verifying        : info-6.7-15.el9.x86_64                                                                  53/70
+  Verifying        : libpkgconf-1.7.3-10.el9.x86_64                                                          54/70
+  Verifying        : make-1:4.3-8.el9.x86_64                                                                 55/70
+  Verifying        : nano-5.6.1-7.el9.x86_64                                                                 56/70
+  Verifying        : pkgconf-1.7.3-10.el9.x86_64                                                             57/70
+  Verifying        : pkgconf-m4-1.7.3-10.el9.noarch                                                          58/70
+  Verifying        : pkgconf-pkg-config-1.7.3-10.el9.x86_64                                                  59/70
+  Verifying        : python3-chardet-4.0.0-5.el9.noarch                                                      60/70
+  Verifying        : python3-idna-2.10-7.el9_4.1.noarch                                                      61/70
+  Verifying        : python3-pysocks-1.7.1-12.el9.noarch                                                     62/70
+  Verifying        : python3-requests-2.25.1-10.el9_6.noarch                                                 63/70
+  Verifying        : python3-urllib3-1.26.5-8.el9_8.noarch                                                   64/70
+  Verifying        : tar-2:1.34-11.el9.x86_64                                                                65/70
+  Verifying        : unzip-6.0-60.el9.x86_64                                                                 66/70
+  Verifying        : vim-filesystem-2:8.2.2637-26.el9_8.6.noarch                                             67/70
+  Verifying        : yum-utils-4.3.0-26.el9.noarch                                                           68/70
+  Verifying        : zip-3.0-35.el9.x86_64                                                                   69/70
+  Verifying        : zstd-1.5.5-1.el9.x86_64                                                                 70/70
+
+Installed:
+  annobin-12.98-2.el9.x86_64                            bzip2-1.0.8-11.el9.x86_64
+  cmake-3.31.8-3.el9.x86_64                             cmake-data-3.31.8-3.el9.noarch
+  cmake-filesystem-3.31.8-3.el9.x86_64                  cmake-rpm-macros-3.31.8-3.el9.noarch
+  cpp-11.5.0-14.el9.alma.1.x86_64                       createrepo_c-0.20.1-4.el9.x86_64
+  createrepo_c-libs-0.20.1-4.el9.x86_64                 debugedit-5.0-11.el9.x86_64
+  dwz-0.16-1.el9.x86_64                                 ed-1.14.2-12.el9.x86_64
+  efi-srpm-macros-6-4.el9.noarch                        elfutils-0.194-1.el9.alma.1.x86_64
+  emacs-filesystem-1:27.2-18.el9.noarch                 fonts-srpm-macros-1:2.0.5-7.el9.1.noarch
+  gcc-11.5.0-14.el9.alma.1.x86_64                       gcc-plugin-annobin-11.5.0-14.el9.alma.1.x86_64
+  gdb-minimal-16.3-3.el9.x86_64                         ghc-srpm-macros-1.5.0-6.el9.noarch
+  git-2.52.0-1.el9.x86_64                               git-core-2.52.0-1.el9.x86_64
+  git-core-doc-2.52.0-1.el9.noarch                      glibc-devel-2.34-266.el9_8.x86_64
+  glibc-headers-2.34-266.el9_8.x86_64                   go-srpm-macros-3.8.1-1.el9.noarch
+  info-6.7-15.el9.x86_64                                kernel-headers-5.14.0-687.19.1.el9_8.x86_64
+  kernel-srpm-macros-1.0-14.el9.noarch                  libmpc-1.2.1-4.el9.x86_64
+  libpkgconf-1.7.3-10.el9.x86_64                        libuv-1:1.42.0-2.el9_4.x86_64
+  libxcrypt-devel-4.4.18-3.el9.x86_64                   llvm-filesystem-21.1.8-2.el9.x86_64
+  llvm-libs-21.1.8-2.el9.x86_64                         lua-srpm-macros-1-6.el9.noarch
+  make-1:4.3-8.el9.x86_64                               nano-5.6.1-7.el9.x86_64
+  ocaml-srpm-macros-6-6.el9.noarch                      openblas-srpm-macros-2-11.el9.noarch
+  patch-2.7.6-16.el9.x86_64                             perl-DynaLoader-1.47-481.1.el9_6.x86_64
+  perl-Error-1:0.17029-7.el9.noarch                     perl-Git-2.52.0-1.el9.noarch
+  perl-TermReadKey-2.38-11.el9.x86_64                   perl-lib-0.65-481.1.el9_6.x86_64
+  perl-srpm-macros-1-41.el9.noarch                      pkgconf-1.7.3-10.el9.x86_64
+  pkgconf-m4-1.7.3-10.el9.noarch                        pkgconf-pkg-config-1.7.3-10.el9.x86_64
+  pyproject-srpm-macros-1.18.5-1.el9.noarch             python-srpm-macros-3.9-54.el9.noarch
+  python3-argcomplete-1.12.0-5.el9.noarch               python3-chardet-4.0.0-5.el9.noarch
+  python3-idna-2.10-7.el9_4.1.noarch                    python3-pysocks-1.7.1-12.el9.noarch
+  python3-requests-2.25.1-10.el9_6.noarch               python3-urllib3-1.26.5-8.el9_8.noarch
+  qt5-srpm-macros-5.15.9-1.el9.noarch                   redhat-rpm-config-210-1.el9.alma.1.noarch
+  rpm-build-4.16.1.3-40.el9.x86_64                      rpmdevtools-9.5-1.el9.noarch
+  rust-srpm-macros-17-4.el9.noarch                      tar-2:1.34-11.el9.x86_64
+  unzip-6.0-60.el9.x86_64                               vim-filesystem-2:8.2.2637-26.el9_8.6.noarch
+  wget-1.21.1-8.el9_4.x86_64                            yum-utils-4.3.0-26.el9.noarch
+  zip-3.0-35.el9.x86_64                                 zstd-1.5.5-1.el9.x86_64
+
+Complete!
+[vs@localhost ~]$ mkdir rpm && cd rpm
+[vs@localhost rpm]$ yumdownloader --source nginx
+enabling appstream-source repository
+enabling baseos-source repository
+enabling extras-source repository
+AlmaLinux 9 - AppStream - Source                                                   444 kB/s | 883 kB     00:01
+AlmaLinux 9 - BaseOS - Source                                                      268 kB/s | 358 kB     00:01
+AlmaLinux 9 - Extras                                                                24 kB/s |  22 kB     00:00
+AlmaLinux 9 - Extras - Source                                                      9.4 kB/s | 9.7 kB     00:01
+nginx-1.20.1-28.el9_8.3.alma.1.src.rpm                                             2.0 MB/s | 1.1 MB     00:00
+[vs@localhost rpm]$ sudo rpm -Uvh nginx*.src.rpm
+Updating / installing...
+   1:nginx-2:1.20.1-28.el9_8.3.alma.1 warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+warning: user mockbuild does not exist - using root
+warning: group mock does not exist - using root
+################################# [100%]
+[vs@localhost rpm]$ sudo yum-builddep nginx
+enabling appstream-source repository
+enabling baseos-source repository
+enabling extras-source repository
+Last metadata expiration check: 0:00:25 ago on Wed Jul  1 16:44:55 2026.
+Package make-1:4.3-8.el9.x86_64 is already installed.
+Package gcc-11.5.0-14.el9.alma.1.x86_64 is already installed.
+Package systemd-252-67.el9_8.2.alma.1.x86_64 is already installed.
+Package systemd-rpm-macros-252-67.el9_8.2.alma.1.noarch is already installed.
+Package gnupg2-2.3.3-5.el9_7.x86_64 is already installed.
+Dependencies resolved.
+===================================================================================================================
+ Package                               Architecture     Version                          Repository           Size
+===================================================================================================================
+Installing:
+ gd-devel                              x86_64           2.3.2-3.el9                      appstream            37 k
+ libxslt-devel                         x86_64           1.1.34-14.el9_8.1                appstream           287 k
+ openssl-devel                         x86_64           1:3.5.5-4.el9_8                  appstream           3.4 M
+ pcre-devel                            x86_64           8.44-4.el9                       appstream           469 k
+ perl-ExtUtils-Embed                   noarch           1.35-481.1.el9_6                 appstream            16 k
+ perl-devel                            x86_64           4:5.32.1-481.1.el9_6             appstream           659 k
+ perl-generators                       noarch           1.13-1.el9                       appstream            15 k
+ zlib-devel                            x86_64           1.2.11-40.el9                    appstream            44 k
+Upgrading:
+ openssl                               x86_64           1:3.5.5-4.el9_8                  baseos              1.4 M
+ openssl-fips-provider                 x86_64           1:3.5.5-4.el9_8                  baseos              816 k
+ openssl-libs                          x86_64           1:3.5.5-4.el9_8                  baseos              2.3 M
+ systemd                               x86_64           252-67.el9_8.4.alma.1            baseos              4.0 M
+ systemd-libs                          x86_64           252-67.el9_8.4.alma.1            baseos              651 k
+ systemd-pam                           x86_64           252-67.el9_8.4.alma.1            baseos              258 k
+ systemd-rpm-macros                    noarch           252-67.el9_8.4.alma.1            baseos               46 k
+ systemd-udev                          x86_64           252-67.el9_8.4.alma.1            baseos              1.9 M
+Installing dependencies:
+ brotli                                x86_64           1.0.9-9.el9_7                    appstream           311 k
+ brotli-devel                          x86_64           1.0.9-9.el9_7                    appstream            30 k
+ bzip2-devel                           x86_64           1.0.8-11.el9                     appstream           213 k
+ cairo                                 x86_64           1.17.4-7.el9                     appstream           659 k
+ dejavu-sans-fonts                     noarch           2.37-18.el9                      baseos              1.3 M
+ fontconfig                            x86_64           2.14.0-2.el9_1                   appstream           274 k
+ fontconfig-devel                      x86_64           2.14.0-2.el9_1                   appstream           127 k
+ fonts-filesystem                      noarch           1:2.0.5-7.el9.1                  baseos              9.0 k
+ freetype                              x86_64           2.10.4-10.el9_5                  baseos              385 k
+ freetype-devel                        x86_64           2.10.4-10.el9_5                  appstream           1.1 M
+ gd                                    x86_64           2.3.2-3.el9                      appstream           131 k
+ glib2-devel                           x86_64           2.68.4-19.el9_8.1                appstream           469 k
+ graphite2                             x86_64           1.3.14-9.el9                     baseos               94 k
+ graphite2-devel                       x86_64           1.3.14-9.el9                     appstream            21 k
+ harfbuzz                              x86_64           2.7.4-10.el9                     baseos              623 k
+ harfbuzz-devel                        x86_64           2.7.4-10.el9                     appstream           304 k
+ harfbuzz-icu                          x86_64           2.7.4-10.el9                     appstream            13 k
+ jbigkit-libs                          x86_64           2.1-23.el9                       appstream            52 k
+ langpacks-core-font-en                noarch           3.0-16.el9                       appstream           9.4 k
+ libICE                                x86_64           1.0.10-8.el9                     appstream            70 k
+ libSM                                 x86_64           1.2.3-10.el9                     appstream            41 k
+ libX11                                x86_64           1.8.12-1.el9                     appstream           647 k
+ libX11-common                         noarch           1.8.12-1.el9                     appstream           144 k
+ libX11-devel                          x86_64           1.8.12-1.el9                     appstream           910 k
+ libX11-xcb                            x86_64           1.8.12-1.el9                     appstream            10 k
+ libXau                                x86_64           1.0.9-8.el9                      appstream            30 k
+ libXau-devel                          x86_64           1.0.9-8.el9                      appstream            13 k
+ libXext                               x86_64           1.3.4-8.el9                      appstream            39 k
+ libXpm                                x86_64           3.5.13-10.el9                    appstream            57 k
+ libXpm-devel                          x86_64           3.5.13-10.el9                    appstream            34 k
+ libXrender                            x86_64           0.9.10-16.el9                    appstream            27 k
+ libXt                                 x86_64           1.2.0-6.el9                      appstream           179 k
+ libblkid-devel                        x86_64           2.37.4-25.el9                    appstream            15 k
+ libffi-devel                          x86_64           3.4.2-8.el9                      appstream            28 k
+ libgpg-error-devel                    x86_64           1.42-5.el9                       appstream            65 k
+ libicu                                x86_64           67.1-10.el9_6                    baseos              9.6 M
+ libicu-devel                          x86_64           67.1-10.el9_6                    appstream           829 k
+ libjpeg-turbo                         x86_64           2.0.90-7.el9                     appstream           174 k
+ libjpeg-turbo-devel                   x86_64           2.0.90-7.el9                     appstream            98 k
+ libmount-devel                        x86_64           2.37.4-25.el9                    appstream            16 k
+ libpng                                x86_64           2:1.6.37-15.el9_8.2              baseos              116 k
+ libpng-devel                          x86_64           2:1.6.37-15.el9_8.2              appstream           290 k
+ libselinux-devel                      x86_64           3.6-3.el9                        appstream           113 k
+ libsepol-devel                        x86_64           3.6-3.el9                        appstream            39 k
+ libtiff                               x86_64           4.4.0-18.el9_8                   appstream           196 k
+ libtiff-devel                         x86_64           4.4.0-18.el9_8                   appstream           527 k
+ libwebp                               x86_64           1.2.0-8.el9_3                    appstream           276 k
+ libwebp-devel                         x86_64           1.2.0-8.el9_3                    appstream            32 k
+ libxcb                                x86_64           1.13.1-9.el9                     appstream           225 k
+ libxcb-devel                          x86_64           1.13.1-9.el9                     appstream           1.0 M
+ libxml2-devel                         x86_64           2.9.13-14.el9_7                  appstream           828 k
+ libxslt                               x86_64           1.1.34-14.el9_8.1                appstream           240 k
+ pcre-cpp                              x86_64           8.44-4.el9                       appstream            24 k
+ pcre-utf16                            x86_64           8.44-4.el9                       appstream           183 k
+ pcre-utf32                            x86_64           8.44-4.el9                       appstream           173 k
+ pcre2-devel                           x86_64           10.40-6.el9                      appstream           471 k
+ pcre2-utf16                           x86_64           10.40-6.el9                      appstream           213 k
+ pcre2-utf32                           x86_64           10.40-6.el9                      appstream           202 k
+ perl-AutoSplit                        noarch           5.74-481.1.el9_6                 appstream            20 k
+ perl-Benchmark                        noarch           1.23-481.1.el9_6                 appstream            25 k
+ perl-CPAN-Meta-Requirements           noarch           2.140-461.el9                    appstream            31 k
+ perl-CPAN-Meta-YAML                   noarch           0.018-461.el9                    appstream            26 k
+ perl-Devel-PPPort                     x86_64           3.62-4.el9                       appstream           211 k
+ perl-ExtUtils-Command                 noarch           2:7.60-3.el9                     appstream            14 k
+ perl-ExtUtils-Constant                noarch           0.25-481.1.el9_6                 appstream            45 k
+ perl-ExtUtils-Install                 noarch           2.20-4.el9                       appstream            44 k
+ perl-ExtUtils-MakeMaker               noarch           2:7.60-3.el9                     appstream           289 k
+ perl-ExtUtils-Manifest                noarch           1:1.73-4.el9                     appstream            34 k
+ perl-ExtUtils-ParseXS                 noarch           1:3.40-460.el9                   appstream           181 k
+ perl-Fedora-VSP                       noarch           0.001-23.el9                     appstream            23 k
+ perl-File-Compare                     noarch           1.100.600-481.1.el9_6            appstream            12 k
+ perl-File-Copy                        noarch           2.34-481.1.el9_6                 appstream            19 k
+ perl-File-Find                        noarch           1.37-481.1.el9_6                 appstream            24 k
+ perl-I18N-Langinfo                    x86_64           0.19-481.1.el9_6                 appstream            21 k
+ perl-JSON-PP                          noarch           1:4.06-4.el9                     appstream            65 k
+ perl-Math-BigInt                      noarch           1:1.9998.18-460.el9              appstream           188 k
+ perl-Math-Complex                     noarch           1.59-481.1.el9_6                 appstream            45 k
+ perl-Test-Harness                     noarch           1:3.42-461.el9                   appstream           267 k
+ perl-locale                           noarch           1.09-481.1.el9_6                 appstream            12 k
+ perl-macros                           noarch           4:5.32.1-481.1.el9_6             appstream           9.2 k
+ perl-version                          x86_64           7:0.99.28-4.el9                  appstream            62 k
+ pixman                                x86_64           0.40.0-6.el9_3                   appstream           268 k
+ python3-pyparsing                     noarch           2.4.7-9.el9                      baseos              149 k
+ sysprof-capture-devel                 x86_64           3.40.1-3.el9                     appstream            59 k
+ systemtap-sdt-devel                   x86_64           5.4-4.el9                        appstream            68 k
+ systemtap-sdt-dtrace                  x86_64           5.4-4.el9                        appstream            69 k
+ xml-common                            noarch           0.6.3-58.el9                     appstream            31 k
+ xorg-x11-proto-devel                  noarch           2024.1-1.el9                     appstream           265 k
+ xz-devel                              x86_64           5.2.5-8.el9_0                    appstream            52 k
+Installing weak dependencies:
+ perl-CPAN-Meta                        noarch           2.150010-460.el9                 appstream           176 k
+ perl-Encode-Locale                    noarch           1.05-21.el9                      appstream            19 k
+ perl-Time-HiRes                       x86_64           4:1.9764-462.el9                 appstream            57 k
+ perl-doc                              noarch           5.32.1-481.1.el9_6               appstream           4.5 M
+
+Transaction Summary
+===================================================================================================================
+Install  101 Packages
+Upgrade    8 Packages
+
+Total download size: 48 M
+Is this ok [y/N]: y
+Downloading Packages:
+(1/109): brotli-devel-1.0.9-9.el9_7.x86_64.rpm                                      73 kB/s |  30 kB     00:00
+(2/109): bzip2-devel-1.0.8-11.el9.x86_64.rpm                                       258 kB/s | 213 kB     00:00
+(3/109): brotli-1.0.9-9.el9_7.x86_64.rpm                                           359 kB/s | 311 kB     00:00
+(4/109): fontconfig-2.14.0-2.el9_1.x86_64.rpm                                      318 kB/s | 274 kB     00:00
+(5/109): cairo-1.17.4-7.el9.x86_64.rpm                                             476 kB/s | 659 kB     00:01
+(6/109): gd-2.3.2-3.el9.x86_64.rpm                                                 443 kB/s | 131 kB     00:00
+(7/109): freetype-devel-2.10.4-10.el9_5.x86_64.rpm                                 2.1 MB/s | 1.1 MB     00:00
+(8/109): gd-devel-2.3.2-3.el9.x86_64.rpm                                           156 kB/s |  37 kB     00:00
+(9/109): graphite2-devel-1.3.14-9.el9.x86_64.rpm                                   114 kB/s |  21 kB     00:00
+(10/109): fontconfig-devel-2.14.0-2.el9_1.x86_64.rpm                                56 kB/s | 127 kB     00:02
+(11/109): harfbuzz-icu-2.7.4-10.el9.x86_64.rpm                                      92 kB/s |  13 kB     00:00
+(12/109): jbigkit-libs-2.1-23.el9.x86_64.rpm                                       183 kB/s |  52 kB     00:00
+(13/109): langpacks-core-font-en-3.0-16.el9.noarch.rpm                              71 kB/s | 9.4 kB     00:00
+(14/109): libICE-1.0.10-8.el9.x86_64.rpm                                           351 kB/s |  70 kB     00:00
+(15/109): libSM-1.2.3-10.el9.x86_64.rpm                                            250 kB/s |  41 kB     00:00
+(16/109): harfbuzz-devel-2.7.4-10.el9.x86_64.rpm                                   172 kB/s | 304 kB     00:01
+(17/109): libX11-1.8.12-1.el9.x86_64.rpm                                           879 kB/s | 647 kB     00:00
+(18/109): glib2-devel-2.68.4-19.el9_8.1.x86_64.rpm                                 177 kB/s | 469 kB     00:02
+(19/109): libX11-xcb-1.8.12-1.el9.x86_64.rpm                                        78 kB/s |  10 kB     00:00
+(20/109): libXau-1.0.9-8.el9.x86_64.rpm                                            130 kB/s |  30 kB     00:00
+(21/109): libXau-devel-1.0.9-8.el9.x86_64.rpm                                       78 kB/s |  13 kB     00:00
+(22/109): libXext-1.3.4-8.el9.x86_64.rpm                                           212 kB/s |  39 kB     00:00
+(23/109): libX11-common-1.8.12-1.el9.noarch.rpm                                    108 kB/s | 144 kB     00:01
+(24/109): libXpm-3.5.13-10.el9.x86_64.rpm                                          306 kB/s |  57 kB     00:00
+(25/109): libXpm-devel-3.5.13-10.el9.x86_64.rpm                                    126 kB/s |  34 kB     00:00
+(26/109): libXrender-0.9.10-16.el9.x86_64.rpm                                      174 kB/s |  27 kB     00:00
+(27/109): libblkid-devel-2.37.4-25.el9.x86_64.rpm                                   96 kB/s |  15 kB     00:00
+(28/109): libXt-1.2.0-6.el9.x86_64.rpm                                             447 kB/s | 179 kB     00:00
+(29/109): libffi-devel-3.4.2-8.el9.x86_64.rpm                                      122 kB/s |  28 kB     00:00
+(30/109): libgpg-error-devel-1.42-5.el9.x86_64.rpm                                 251 kB/s |  65 kB     00:00
+(31/109): libjpeg-turbo-2.0.90-7.el9.x86_64.rpm                                    537 kB/s | 174 kB     00:00
+(32/109): libjpeg-turbo-devel-2.0.90-7.el9.x86_64.rpm                              311 kB/s |  98 kB     00:00
+(33/109): libmount-devel-2.37.4-25.el9.x86_64.rpm                                  105 kB/s |  16 kB     00:00
+(34/109): libpng-devel-1.6.37-15.el9_8.2.x86_64.rpm                                472 kB/s | 290 kB     00:00
+(35/109): libselinux-devel-3.6-3.el9.x86_64.rpm                                     76 kB/s | 113 kB     00:01
+(36/109): libicu-devel-67.1-10.el9_6.x86_64.rpm                                    232 kB/s | 829 kB     00:03
+(37/109): libsepol-devel-3.6-3.el9.x86_64.rpm                                       76 kB/s |  39 kB     00:00
+(38/109): libtiff-4.4.0-18.el9_8.x86_64.rpm                                        388 kB/s | 196 kB     00:00
+(39/109): libwebp-1.2.0-8.el9_3.x86_64.rpm                                         819 kB/s | 276 kB     00:00
+(40/109): libwebp-devel-1.2.0-8.el9_3.x86_64.rpm                                   158 kB/s |  32 kB     00:00
+(41/109): libX11-devel-1.8.12-1.el9.x86_64.rpm                                     141 kB/s | 910 kB     00:06
+(42/109): libxcb-1.13.1-9.el9.x86_64.rpm                                           545 kB/s | 225 kB     00:00
+(43/109): libxcb-devel-1.13.1-9.el9.x86_64.rpm                                     1.7 MB/s | 1.0 MB     00:00
+(44/109): libtiff-devel-4.4.0-18.el9_8.x86_64.rpm                                  241 kB/s | 527 kB     00:02
+(45/109): libxslt-1.1.34-14.el9_8.1.x86_64.rpm                                     717 kB/s | 240 kB     00:00
+(46/109): openssl-devel-3.5.5-4.el9_8.x86_64.rpm                                   4.6 MB/s | 3.4 MB     00:00
+(47/109): pcre-cpp-8.44-4.el9.x86_64.rpm                                           170 kB/s |  24 kB     00:00
+(48/109): libxslt-devel-1.1.34-14.el9_8.1.x86_64.rpm                               165 kB/s | 287 kB     00:01
+(49/109): pcre-utf16-8.44-4.el9.x86_64.rpm                                         367 kB/s | 183 kB     00:00
+(50/109): pcre-devel-8.44-4.el9.x86_64.rpm                                         307 kB/s | 469 kB     00:01
+(51/109): pcre-utf32-8.44-4.el9.x86_64.rpm                                         667 kB/s | 173 kB     00:00
+(52/109): pcre2-utf16-10.40-6.el9.x86_64.rpm                                       916 kB/s | 213 kB     00:00
+(53/109): libxml2-devel-2.9.13-14.el9_7.x86_64.rpm                                 228 kB/s | 828 kB     00:03
+(54/109): pcre2-utf32-10.40-6.el9.x86_64.rpm                                       968 kB/s | 202 kB     00:00
+(55/109): perl-AutoSplit-5.74-481.1.el9_6.noarch.rpm                                85 kB/s |  20 kB     00:00
+(56/109): perl-Benchmark-1.23-481.1.el9_6.noarch.rpm                               156 kB/s |  25 kB     00:00
+(57/109): perl-CPAN-Meta-Requirements-2.140-461.el9.noarch.rpm                     161 kB/s |  31 kB     00:00
+(58/109): perl-CPAN-Meta-YAML-0.018-461.el9.noarch.rpm                             120 kB/s |  26 kB     00:00
+(59/109): perl-Devel-PPPort-3.62-4.el9.x86_64.rpm                                  560 kB/s | 211 kB     00:00
+(60/109): perl-Encode-Locale-1.05-21.el9.noarch.rpm                                135 kB/s |  19 kB     00:00
+(61/109): perl-CPAN-Meta-2.150010-460.el9.noarch.rpm                               155 kB/s | 176 kB     00:01
+(62/109): perl-ExtUtils-Command-7.60-3.el9.noarch.rpm                               84 kB/s |  14 kB     00:00
+(63/109): perl-ExtUtils-Embed-1.35-481.1.el9_6.noarch.rpm                          118 kB/s |  16 kB     00:00
+(64/109): perl-ExtUtils-Constant-0.25-481.1.el9_6.noarch.rpm                       148 kB/s |  45 kB     00:00
+(65/109): perl-ExtUtils-Install-2.20-4.el9.noarch.rpm                              194 kB/s |  44 kB     00:00
+(66/109): pcre2-devel-10.40-6.el9.x86_64.rpm                                       219 kB/s | 471 kB     00:02
+(67/109): perl-ExtUtils-Manifest-1.73-4.el9.noarch.rpm                             212 kB/s |  34 kB     00:00
+(68/109): perl-Fedora-VSP-0.001-23.el9.noarch.rpm                                  161 kB/s |  23 kB     00:00
+(69/109): perl-File-Compare-1.100.600-481.1.el9_6.noarch.rpm                        80 kB/s |  12 kB     00:00
+(70/109): perl-File-Copy-2.34-481.1.el9_6.noarch.rpm                               129 kB/s |  19 kB     00:00
+(71/109): perl-File-Find-1.37-481.1.el9_6.noarch.rpm                               160 kB/s |  24 kB     00:00
+(72/109): perl-ExtUtils-ParseXS-3.40-460.el9.noarch.rpm                            239 kB/s | 181 kB     00:00
+(73/109): perl-ExtUtils-MakeMaker-7.60-3.el9.noarch.rpm                            299 kB/s | 289 kB     00:00
+(74/109): perl-I18N-Langinfo-0.19-481.1.el9_6.x86_64.rpm                           133 kB/s |  21 kB     00:00
+(75/109): perl-JSON-PP-4.06-4.el9.noarch.rpm                                       301 kB/s |  65 kB     00:00
+(76/109): perl-Math-Complex-1.59-481.1.el9_6.noarch.rpm                            281 kB/s |  45 kB     00:00
+(77/109): perl-Time-HiRes-1.9764-462.el9.x86_64.rpm                                289 kB/s |  57 kB     00:00
+(78/109): perl-Math-BigInt-1.9998.18-460.el9.noarch.rpm                            358 kB/s | 188 kB     00:00
+(79/109): perl-doc-5.32.1-481.1.el9_6.noarch.rpm                                   4.7 MB/s | 4.5 MB     00:00
+(80/109): perl-Test-Harness-3.42-461.el9.noarch.rpm                                193 kB/s | 267 kB     00:01
+(81/109): perl-locale-1.09-481.1.el9_6.noarch.rpm                                   86 kB/s |  12 kB     00:00
+(82/109): perl-generators-1.13-1.el9.noarch.rpm                                     82 kB/s |  15 kB     00:00
+(83/109): perl-macros-5.32.1-481.1.el9_6.noarch.rpm                                 72 kB/s | 9.2 kB     00:00
+(84/109): perl-devel-5.32.1-481.1.el9_6.x86_64.rpm                                 440 kB/s | 659 kB     00:01
+(85/109): perl-version-0.99.28-4.el9.x86_64.rpm                                    233 kB/s |  62 kB     00:00
+(86/109): systemtap-sdt-devel-5.4-4.el9.x86_64.rpm                                 288 kB/s |  68 kB     00:00
+(87/109): pixman-0.40.0-6.el9_3.x86_64.rpm                                         560 kB/s | 268 kB     00:00
+(88/109): sysprof-capture-devel-3.40.1-3.el9.x86_64.rpm                            129 kB/s |  59 kB     00:00
+(89/109): systemtap-sdt-dtrace-5.4-4.el9.x86_64.rpm                                289 kB/s |  69 kB     00:00
+(90/109): xml-common-0.6.3-58.el9.noarch.rpm                                       162 kB/s |  31 kB     00:00
+(91/109): zlib-devel-1.2.11-40.el9.x86_64.rpm                                      225 kB/s |  44 kB     00:00
+(92/109): xz-devel-5.2.5-8.el9_0.x86_64.rpm                                        177 kB/s |  52 kB     00:00
+(93/109): fonts-filesystem-2.0.5-7.el9.1.noarch.rpm                                 78 kB/s | 9.0 kB     00:00
+(94/109): dejavu-sans-fonts-2.37-18.el9.noarch.rpm                                 3.4 MB/s | 1.3 MB     00:00
+(95/109): freetype-2.10.4-10.el9_5.x86_64.rpm                                      1.3 MB/s | 385 kB     00:00
+(96/109): graphite2-1.3.14-9.el9.x86_64.rpm                                        450 kB/s |  94 kB     00:00
+(97/109): harfbuzz-2.7.4-10.el9.x86_64.rpm                                         1.5 MB/s | 623 kB     00:00
+(98/109): libpng-1.6.37-15.el9_8.2.x86_64.rpm                                      600 kB/s | 116 kB     00:00
+(99/109): python3-pyparsing-2.4.7-9.el9.noarch.rpm                                 408 kB/s | 149 kB     00:00
+(100/109): xorg-x11-proto-devel-2024.1-1.el9.noarch.rpm                            143 kB/s | 265 kB     00:01
+(101/109): openssl-3.5.5-4.el9_8.x86_64.rpm                                        3.2 MB/s | 1.4 MB     00:00
+(102/109): openssl-fips-provider-3.5.5-4.el9_8.x86_64.rpm                          998 kB/s | 816 kB     00:00
+(103/109): openssl-libs-3.5.5-4.el9_8.x86_64.rpm                                   2.0 MB/s | 2.3 MB     00:01
+(104/109): libicu-67.1-10.el9_6.x86_64.rpm                                         3.5 MB/s | 9.6 MB     00:02
+(105/109): systemd-pam-252-67.el9_8.4.alma.1.x86_64.rpm                            709 kB/s | 258 kB     00:00
+(106/109): systemd-libs-252-67.el9_8.4.alma.1.x86_64.rpm                           870 kB/s | 651 kB     00:00
+(107/109): systemd-rpm-macros-252-67.el9_8.4.alma.1.noarch.rpm                     254 kB/s |  46 kB     00:00
+(108/109): systemd-252-67.el9_8.4.alma.1.x86_64.rpm                                2.3 MB/s | 4.0 MB     00:01
+(109/109): systemd-udev-252-67.el9_8.4.alma.1.x86_64.rpm                           1.5 MB/s | 1.9 MB     00:01
+-------------------------------------------------------------------------------------------------------------------
+Total                                                                              1.8 MB/s |  48 MB     00:26
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                           1/1
+  Installing       : zlib-devel-1.2.11-40.el9.x86_64                                                         1/117
+  Installing       : perl-File-Find-1.37-481.1.el9_6.noarch                                                  2/117
+  Installing       : libpng-2:1.6.37-15.el9_8.2.x86_64                                                       3/117
+  Installing       : perl-File-Copy-2.34-481.1.el9_6.noarch                                                  4/117
+  Installing       : libwebp-1.2.0-8.el9_3.x86_64                                                            5/117
+  Installing       : libjpeg-turbo-2.0.90-7.el9.x86_64                                                       6/117
+  Installing       : libpng-devel-2:1.6.37-15.el9_8.2.x86_64                                                 7/117
+  Installing       : libicu-67.1-10.el9_6.x86_64                                                             8/117
+  Installing       : graphite2-1.3.14-9.el9.x86_64                                                           9/117
+  Installing       : harfbuzz-2.7.4-10.el9.x86_64                                                           10/117
+  Installing       : freetype-2.10.4-10.el9_5.x86_64                                                        11/117
+  Installing       : fonts-filesystem-1:2.0.5-7.el9.1.noarch                                                12/117
+  Installing       : dejavu-sans-fonts-2.37-18.el9.noarch                                                   13/117
+  Installing       : xorg-x11-proto-devel-2024.1-1.el9.noarch                                               14/117
+  Installing       : perl-Time-HiRes-4:1.9764-462.el9.x86_64                                                15/117
+  Installing       : perl-File-Compare-1.100.600-481.1.el9_6.noarch                                         16/117
+  Installing       : perl-ExtUtils-ParseXS-1:3.40-460.el9.noarch                                            17/117
+  Installing       : libXau-1.0.9-8.el9.x86_64                                                              18/117
+  Installing       : libxcb-1.13.1-9.el9.x86_64                                                             19/117
+  Installing       : libICE-1.0.10-8.el9.x86_64                                                             20/117
+  Installing       : libSM-1.2.3-10.el9.x86_64                                                              21/117
+  Installing       : libXau-devel-1.0.9-8.el9.x86_64                                                        22/117
+  Installing       : libxcb-devel-1.13.1-9.el9.x86_64                                                       23/117
+  Installing       : langpacks-core-font-en-3.0-16.el9.noarch                                               24/117
+  Installing       : harfbuzz-icu-2.7.4-10.el9.x86_64                                                       25/117
+  Installing       : graphite2-devel-1.3.14-9.el9.x86_64                                                    26/117
+  Installing       : libicu-devel-67.1-10.el9_6.x86_64                                                      27/117
+  Installing       : libjpeg-turbo-devel-2.0.90-7.el9.x86_64                                                28/117
+  Installing       : libwebp-devel-1.2.0-8.el9_3.x86_64                                                     29/117
+  Installing       : perl-ExtUtils-Command-2:7.60-3.el9.noarch                                              30/117
+  Installing       : perl-ExtUtils-Manifest-1:1.73-4.el9.noarch                                             31/117
+  Upgrading        : openssl-libs-1:3.5.5-4.el9_8.x86_64                                                    32/117
+  Upgrading        : openssl-fips-provider-1:3.5.5-4.el9_8.x86_64                                           33/117
+  Upgrading        : systemd-libs-252-67.el9_8.4.alma.1.x86_64                                              34/117
+  Running scriptlet: systemd-libs-252-67.el9_8.4.alma.1.x86_64                                              34/117
+  Upgrading        : systemd-rpm-macros-252-67.el9_8.4.alma.1.noarch                                        35/117
+  Running scriptlet: systemd-252-67.el9_8.4.alma.1.x86_64                                                   36/117
+  Upgrading        : systemd-252-67.el9_8.4.alma.1.x86_64                                                   36/117
+  Running scriptlet: systemd-252-67.el9_8.4.alma.1.x86_64                                                   36/117
+  Upgrading        : systemd-pam-252-67.el9_8.4.alma.1.x86_64                                               37/117
+  Installing       : python3-pyparsing-2.4.7-9.el9.noarch                                                   38/117
+  Installing       : systemtap-sdt-dtrace-5.4-4.el9.x86_64                                                  39/117
+  Installing       : systemtap-sdt-devel-5.4-4.el9.x86_64                                                   40/117
+  Installing       : xz-devel-5.2.5-8.el9_0.x86_64                                                          41/117
+  Installing       : libxml2-devel-2.9.13-14.el9_7.x86_64                                                   42/117
+  Running scriptlet: xml-common-0.6.3-58.el9.noarch                                                         43/117
+  Installing       : xml-common-0.6.3-58.el9.noarch                                                         43/117
+  Installing       : fontconfig-2.14.0-2.el9_1.x86_64                                                       44/117
+  Running scriptlet: fontconfig-2.14.0-2.el9_1.x86_64                                                       44/117
+  Installing       : sysprof-capture-devel-3.40.1-3.el9.x86_64                                              45/117
+  Installing       : pixman-0.40.0-6.el9_3.x86_64                                                           46/117
+  Installing       : perl-macros-4:5.32.1-481.1.el9_6.noarch                                                47/117
+  Installing       : perl-locale-1.09-481.1.el9_6.noarch                                                    48/117
+  Installing       : perl-version-7:0.99.28-4.el9.x86_64                                                    49/117
+  Installing       : perl-CPAN-Meta-Requirements-2.140-461.el9.noarch                                       50/117
+  Installing       : perl-doc-5.32.1-481.1.el9_6.noarch                                                     51/117
+  Installing       : perl-Math-Complex-1.59-481.1.el9_6.noarch                                              52/117
+  Installing       : perl-Math-BigInt-1:1.9998.18-460.el9.noarch                                            53/117
+  Installing       : perl-JSON-PP-1:4.06-4.el9.noarch                                                       54/117
+  Installing       : perl-I18N-Langinfo-0.19-481.1.el9_6.x86_64                                             55/117
+  Installing       : perl-Encode-Locale-1.05-21.el9.noarch                                                  56/117
+  Installing       : perl-Fedora-VSP-0.001-23.el9.noarch                                                    57/117
+  Installing       : perl-ExtUtils-Constant-0.25-481.1.el9_6.noarch                                         58/117
+  Installing       : perl-Devel-PPPort-3.62-4.el9.x86_64                                                    59/117
+  Installing       : perl-CPAN-Meta-YAML-0.018-461.el9.noarch                                               60/117
+  Installing       : perl-CPAN-Meta-2.150010-460.el9.noarch                                                 61/117
+  Installing       : perl-Benchmark-1.23-481.1.el9_6.noarch                                                 62/117
+  Installing       : perl-Test-Harness-1:3.42-461.el9.noarch                                                63/117
+  Installing       : perl-AutoSplit-5.74-481.1.el9_6.noarch                                                 64/117
+  Installing       : perl-ExtUtils-MakeMaker-2:7.60-3.el9.noarch                                            65/117
+  Installing       : perl-ExtUtils-Install-2.20-4.el9.noarch                                                66/117
+  Installing       : perl-devel-4:5.32.1-481.1.el9_6.x86_64                                                 67/117
+  Installing       : pcre2-utf32-10.40-6.el9.x86_64                                                         68/117
+  Installing       : pcre2-utf16-10.40-6.el9.x86_64                                                         69/117
+  Installing       : pcre2-devel-10.40-6.el9.x86_64                                                         70/117
+  Installing       : pcre-utf32-8.44-4.el9.x86_64                                                           71/117
+  Installing       : pcre-utf16-8.44-4.el9.x86_64                                                           72/117
+  Installing       : pcre-cpp-8.44-4.el9.x86_64                                                             73/117
+  Installing       : pcre-devel-8.44-4.el9.x86_64                                                           74/117
+  Installing       : libxslt-1.1.34-14.el9_8.1.x86_64                                                       75/117
+  Installing       : libsepol-devel-3.6-3.el9.x86_64                                                        76/117
+  Installing       : libselinux-devel-3.6-3.el9.x86_64                                                      77/117
+  Installing       : libgpg-error-devel-1.42-5.el9.x86_64                                                   78/117
+  Installing       : libffi-devel-3.4.2-8.el9.x86_64                                                        79/117
+  Installing       : libblkid-devel-2.37.4-25.el9.x86_64                                                    80/117
+  Installing       : libmount-devel-2.37.4-25.el9.x86_64                                                    81/117
+  Installing       : glib2-devel-2.68.4-19.el9_8.1.x86_64                                                   82/117
+  Installing       : libX11-xcb-1.8.12-1.el9.x86_64                                                         83/117
+  Installing       : libX11-common-1.8.12-1.el9.noarch                                                      84/117
+  Installing       : libX11-1.8.12-1.el9.x86_64                                                             85/117
+  Installing       : libX11-devel-1.8.12-1.el9.x86_64                                                       86/117
+  Installing       : libXext-1.3.4-8.el9.x86_64                                                             87/117
+  Installing       : libXpm-3.5.13-10.el9.x86_64                                                            88/117
+  Installing       : libXrender-0.9.10-16.el9.x86_64                                                        89/117
+  Installing       : cairo-1.17.4-7.el9.x86_64                                                              90/117
+  Installing       : libXt-1.2.0-6.el9.x86_64                                                               91/117
+  Installing       : libXpm-devel-3.5.13-10.el9.x86_64                                                      92/117
+  Installing       : jbigkit-libs-2.1-23.el9.x86_64                                                         93/117
+  Installing       : libtiff-4.4.0-18.el9_8.x86_64                                                          94/117
+  Installing       : gd-2.3.2-3.el9.x86_64                                                                  95/117
+  Installing       : libtiff-devel-4.4.0-18.el9_8.x86_64                                                    96/117
+  Installing       : bzip2-devel-1.0.8-11.el9.x86_64                                                        97/117
+  Installing       : brotli-1.0.9-9.el9_7.x86_64                                                            98/117
+  Installing       : brotli-devel-1.0.9-9.el9_7.x86_64                                                      99/117
+  Installing       : harfbuzz-devel-2.7.4-10.el9.x86_64                                                    100/117
+  Installing       : freetype-devel-2.10.4-10.el9_5.x86_64                                                 101/117
+  Installing       : fontconfig-devel-2.14.0-2.el9_1.x86_64                                                102/117
+  Installing       : gd-devel-2.3.2-3.el9.x86_64                                                           103/117
+  Installing       : libxslt-devel-1.1.34-14.el9_8.1.x86_64                                                104/117
+  Installing       : perl-ExtUtils-Embed-1.35-481.1.el9_6.noarch                                           105/117
+  Installing       : perl-generators-1.13-1.el9.noarch                                                     106/117
+  Upgrading        : systemd-udev-252-67.el9_8.4.alma.1.x86_64                                             107/117
+  Running scriptlet: systemd-udev-252-67.el9_8.4.alma.1.x86_64                                             107/117
+  Installing       : openssl-devel-1:3.5.5-4.el9_8.x86_64                                                  108/117
+  Upgrading        : openssl-1:3.5.5-4.el9_8.x86_64                                                        109/117
+  Cleanup          : openssl-1:3.5.5-2.el9_8.x86_64                                                        110/117
+  Running scriptlet: systemd-udev-252-67.el9_8.2.alma.1.x86_64                                             111/117
+  Cleanup          : systemd-udev-252-67.el9_8.2.alma.1.x86_64                                             111/117
+  Running scriptlet: systemd-udev-252-67.el9_8.2.alma.1.x86_64                                             111/117
+  Cleanup          : systemd-252-67.el9_8.2.alma.1.x86_64                                                  112/117
+  Running scriptlet: systemd-252-67.el9_8.2.alma.1.x86_64                                                  112/117
+  Cleanup          : systemd-libs-252-67.el9_8.2.alma.1.x86_64                                             113/117
+  Cleanup          : systemd-pam-252-67.el9_8.2.alma.1.x86_64                                              114/117
+  Cleanup          : openssl-fips-provider-1:3.5.5-2.el9_8.x86_64                                          115/117
+  Cleanup          : systemd-rpm-macros-252-67.el9_8.2.alma.1.noarch                                       116/117
+  Cleanup          : openssl-libs-1:3.5.5-2.el9_8.x86_64                                                   117/117
+  Running scriptlet: fontconfig-2.14.0-2.el9_1.x86_64                                                      117/117
+  Running scriptlet: openssl-libs-1:3.5.5-2.el9_8.x86_64                                                   117/117
+  Verifying        : brotli-1.0.9-9.el9_7.x86_64                                                             1/117
+  Verifying        : brotli-devel-1.0.9-9.el9_7.x86_64                                                       2/117
+  Verifying        : bzip2-devel-1.0.8-11.el9.x86_64                                                         3/117
+  Verifying        : cairo-1.17.4-7.el9.x86_64                                                               4/117
+  Verifying        : fontconfig-2.14.0-2.el9_1.x86_64                                                        5/117
+  Verifying        : fontconfig-devel-2.14.0-2.el9_1.x86_64                                                  6/117
+  Verifying        : freetype-devel-2.10.4-10.el9_5.x86_64                                                   7/117
+  Verifying        : gd-2.3.2-3.el9.x86_64                                                                   8/117
+  Verifying        : gd-devel-2.3.2-3.el9.x86_64                                                             9/117
+  Verifying        : glib2-devel-2.68.4-19.el9_8.1.x86_64                                                   10/117
+  Verifying        : graphite2-devel-1.3.14-9.el9.x86_64                                                    11/117
+  Verifying        : harfbuzz-devel-2.7.4-10.el9.x86_64                                                     12/117
+  Verifying        : harfbuzz-icu-2.7.4-10.el9.x86_64                                                       13/117
+  Verifying        : jbigkit-libs-2.1-23.el9.x86_64                                                         14/117
+  Verifying        : langpacks-core-font-en-3.0-16.el9.noarch                                               15/117
+  Verifying        : libICE-1.0.10-8.el9.x86_64                                                             16/117
+  Verifying        : libSM-1.2.3-10.el9.x86_64                                                              17/117
+  Verifying        : libX11-1.8.12-1.el9.x86_64                                                             18/117
+  Verifying        : libX11-common-1.8.12-1.el9.noarch                                                      19/117
+  Verifying        : libX11-devel-1.8.12-1.el9.x86_64                                                       20/117
+  Verifying        : libX11-xcb-1.8.12-1.el9.x86_64                                                         21/117
+  Verifying        : libXau-1.0.9-8.el9.x86_64                                                              22/117
+  Verifying        : libXau-devel-1.0.9-8.el9.x86_64                                                        23/117
+  Verifying        : libXext-1.3.4-8.el9.x86_64                                                             24/117
+  Verifying        : libXpm-3.5.13-10.el9.x86_64                                                            25/117
+  Verifying        : libXpm-devel-3.5.13-10.el9.x86_64                                                      26/117
+  Verifying        : libXrender-0.9.10-16.el9.x86_64                                                        27/117
+  Verifying        : libXt-1.2.0-6.el9.x86_64                                                               28/117
+  Verifying        : libblkid-devel-2.37.4-25.el9.x86_64                                                    29/117
+  Verifying        : libffi-devel-3.4.2-8.el9.x86_64                                                        30/117
+  Verifying        : libgpg-error-devel-1.42-5.el9.x86_64                                                   31/117
+  Verifying        : libicu-devel-67.1-10.el9_6.x86_64                                                      32/117
+  Verifying        : libjpeg-turbo-2.0.90-7.el9.x86_64                                                      33/117
+  Verifying        : libjpeg-turbo-devel-2.0.90-7.el9.x86_64                                                34/117
+  Verifying        : libmount-devel-2.37.4-25.el9.x86_64                                                    35/117
+  Verifying        : libpng-devel-2:1.6.37-15.el9_8.2.x86_64                                                36/117
+  Verifying        : libselinux-devel-3.6-3.el9.x86_64                                                      37/117
+  Verifying        : libsepol-devel-3.6-3.el9.x86_64                                                        38/117
+  Verifying        : libtiff-4.4.0-18.el9_8.x86_64                                                          39/117
+  Verifying        : libtiff-devel-4.4.0-18.el9_8.x86_64                                                    40/117
+  Verifying        : libwebp-1.2.0-8.el9_3.x86_64                                                           41/117
+  Verifying        : libwebp-devel-1.2.0-8.el9_3.x86_64                                                     42/117
+  Verifying        : libxcb-1.13.1-9.el9.x86_64                                                             43/117
+  Verifying        : libxcb-devel-1.13.1-9.el9.x86_64                                                       44/117
+  Verifying        : libxml2-devel-2.9.13-14.el9_7.x86_64                                                   45/117
+  Verifying        : libxslt-1.1.34-14.el9_8.1.x86_64                                                       46/117
+  Verifying        : libxslt-devel-1.1.34-14.el9_8.1.x86_64                                                 47/117
+  Verifying        : openssl-devel-1:3.5.5-4.el9_8.x86_64                                                   48/117
+  Verifying        : pcre-cpp-8.44-4.el9.x86_64                                                             49/117
+  Verifying        : pcre-devel-8.44-4.el9.x86_64                                                           50/117
+  Verifying        : pcre-utf16-8.44-4.el9.x86_64                                                           51/117
+  Verifying        : pcre-utf32-8.44-4.el9.x86_64                                                           52/117
+  Verifying        : pcre2-devel-10.40-6.el9.x86_64                                                         53/117
+  Verifying        : pcre2-utf16-10.40-6.el9.x86_64                                                         54/117
+  Verifying        : pcre2-utf32-10.40-6.el9.x86_64                                                         55/117
+  Verifying        : perl-AutoSplit-5.74-481.1.el9_6.noarch                                                 56/117
+  Verifying        : perl-Benchmark-1.23-481.1.el9_6.noarch                                                 57/117
+  Verifying        : perl-CPAN-Meta-2.150010-460.el9.noarch                                                 58/117
+  Verifying        : perl-CPAN-Meta-Requirements-2.140-461.el9.noarch                                       59/117
+  Verifying        : perl-CPAN-Meta-YAML-0.018-461.el9.noarch                                               60/117
+  Verifying        : perl-Devel-PPPort-3.62-4.el9.x86_64                                                    61/117
+  Verifying        : perl-Encode-Locale-1.05-21.el9.noarch                                                  62/117
+  Verifying        : perl-ExtUtils-Command-2:7.60-3.el9.noarch                                              63/117
+  Verifying        : perl-ExtUtils-Constant-0.25-481.1.el9_6.noarch                                         64/117
+  Verifying        : perl-ExtUtils-Embed-1.35-481.1.el9_6.noarch                                            65/117
+  Verifying        : perl-ExtUtils-Install-2.20-4.el9.noarch                                                66/117
+  Verifying        : perl-ExtUtils-MakeMaker-2:7.60-3.el9.noarch                                            67/117
+  Verifying        : perl-ExtUtils-Manifest-1:1.73-4.el9.noarch                                             68/117
+  Verifying        : perl-ExtUtils-ParseXS-1:3.40-460.el9.noarch                                            69/117
+  Verifying        : perl-Fedora-VSP-0.001-23.el9.noarch                                                    70/117
+  Verifying        : perl-File-Compare-1.100.600-481.1.el9_6.noarch                                         71/117
+  Verifying        : perl-File-Copy-2.34-481.1.el9_6.noarch                                                 72/117
+  Verifying        : perl-File-Find-1.37-481.1.el9_6.noarch                                                 73/117
+  Verifying        : perl-I18N-Langinfo-0.19-481.1.el9_6.x86_64                                             74/117
+  Verifying        : perl-JSON-PP-1:4.06-4.el9.noarch                                                       75/117
+  Verifying        : perl-Math-BigInt-1:1.9998.18-460.el9.noarch                                            76/117
+  Verifying        : perl-Math-Complex-1.59-481.1.el9_6.noarch                                              77/117
+  Verifying        : perl-Test-Harness-1:3.42-461.el9.noarch                                                78/117
+  Verifying        : perl-Time-HiRes-4:1.9764-462.el9.x86_64                                                79/117
+  Verifying        : perl-devel-4:5.32.1-481.1.el9_6.x86_64                                                 80/117
+  Verifying        : perl-doc-5.32.1-481.1.el9_6.noarch                                                     81/117
+  Verifying        : perl-generators-1.13-1.el9.noarch                                                      82/117
+  Verifying        : perl-locale-1.09-481.1.el9_6.noarch                                                    83/117
+  Verifying        : perl-macros-4:5.32.1-481.1.el9_6.noarch                                                84/117
+  Verifying        : perl-version-7:0.99.28-4.el9.x86_64                                                    85/117
+  Verifying        : pixman-0.40.0-6.el9_3.x86_64                                                           86/117
+  Verifying        : sysprof-capture-devel-3.40.1-3.el9.x86_64                                              87/117
+  Verifying        : systemtap-sdt-devel-5.4-4.el9.x86_64                                                   88/117
+  Verifying        : systemtap-sdt-dtrace-5.4-4.el9.x86_64                                                  89/117
+  Verifying        : xml-common-0.6.3-58.el9.noarch                                                         90/117
+  Verifying        : xorg-x11-proto-devel-2024.1-1.el9.noarch                                               91/117
+  Verifying        : xz-devel-5.2.5-8.el9_0.x86_64                                                          92/117
+  Verifying        : zlib-devel-1.2.11-40.el9.x86_64                                                        93/117
+  Verifying        : dejavu-sans-fonts-2.37-18.el9.noarch                                                   94/117
+  Verifying        : fonts-filesystem-1:2.0.5-7.el9.1.noarch                                                95/117
+  Verifying        : freetype-2.10.4-10.el9_5.x86_64                                                        96/117
+  Verifying        : graphite2-1.3.14-9.el9.x86_64                                                          97/117
+  Verifying        : harfbuzz-2.7.4-10.el9.x86_64                                                           98/117
+  Verifying        : libicu-67.1-10.el9_6.x86_64                                                            99/117
+  Verifying        : libpng-2:1.6.37-15.el9_8.2.x86_64                                                     100/117
+  Verifying        : python3-pyparsing-2.4.7-9.el9.noarch                                                  101/117
+  Verifying        : openssl-1:3.5.5-4.el9_8.x86_64                                                        102/117
+  Verifying        : openssl-1:3.5.5-2.el9_8.x86_64                                                        103/117
+  Verifying        : openssl-fips-provider-1:3.5.5-4.el9_8.x86_64                                          104/117
+  Verifying        : openssl-fips-provider-1:3.5.5-2.el9_8.x86_64                                          105/117
+  Verifying        : openssl-libs-1:3.5.5-4.el9_8.x86_64                                                   106/117
+  Verifying        : openssl-libs-1:3.5.5-2.el9_8.x86_64                                                   107/117
+  Verifying        : systemd-252-67.el9_8.4.alma.1.x86_64                                                  108/117
+  Verifying        : systemd-252-67.el9_8.2.alma.1.x86_64                                                  109/117
+  Verifying        : systemd-libs-252-67.el9_8.4.alma.1.x86_64                                             110/117
+  Verifying        : systemd-libs-252-67.el9_8.2.alma.1.x86_64                                             111/117
+  Verifying        : systemd-pam-252-67.el9_8.4.alma.1.x86_64                                              112/117
+  Verifying        : systemd-pam-252-67.el9_8.2.alma.1.x86_64                                              113/117
+  Verifying        : systemd-rpm-macros-252-67.el9_8.4.alma.1.noarch                                       114/117
+  Verifying        : systemd-rpm-macros-252-67.el9_8.2.alma.1.noarch                                       115/117
+  Verifying        : systemd-udev-252-67.el9_8.4.alma.1.x86_64                                             116/117
+  Verifying        : systemd-udev-252-67.el9_8.2.alma.1.x86_64                                             117/117
+
+Upgraded:
+  openssl-1:3.5.5-4.el9_8.x86_64                            openssl-fips-provider-1:3.5.5-4.el9_8.x86_64
+  openssl-libs-1:3.5.5-4.el9_8.x86_64                       systemd-252-67.el9_8.4.alma.1.x86_64
+  systemd-libs-252-67.el9_8.4.alma.1.x86_64                 systemd-pam-252-67.el9_8.4.alma.1.x86_64
+  systemd-rpm-macros-252-67.el9_8.4.alma.1.noarch           systemd-udev-252-67.el9_8.4.alma.1.x86_64
+Installed:
+  brotli-1.0.9-9.el9_7.x86_64                             brotli-devel-1.0.9-9.el9_7.x86_64
+  bzip2-devel-1.0.8-11.el9.x86_64                         cairo-1.17.4-7.el9.x86_64
+  dejavu-sans-fonts-2.37-18.el9.noarch                    fontconfig-2.14.0-2.el9_1.x86_64
+  fontconfig-devel-2.14.0-2.el9_1.x86_64                  fonts-filesystem-1:2.0.5-7.el9.1.noarch
+  freetype-2.10.4-10.el9_5.x86_64                         freetype-devel-2.10.4-10.el9_5.x86_64
+  gd-2.3.2-3.el9.x86_64                                   gd-devel-2.3.2-3.el9.x86_64
+  glib2-devel-2.68.4-19.el9_8.1.x86_64                    graphite2-1.3.14-9.el9.x86_64
+  graphite2-devel-1.3.14-9.el9.x86_64                     harfbuzz-2.7.4-10.el9.x86_64
+  harfbuzz-devel-2.7.4-10.el9.x86_64                      harfbuzz-icu-2.7.4-10.el9.x86_64
+  jbigkit-libs-2.1-23.el9.x86_64                          langpacks-core-font-en-3.0-16.el9.noarch
+  libICE-1.0.10-8.el9.x86_64                              libSM-1.2.3-10.el9.x86_64
+  libX11-1.8.12-1.el9.x86_64                              libX11-common-1.8.12-1.el9.noarch
+  libX11-devel-1.8.12-1.el9.x86_64                        libX11-xcb-1.8.12-1.el9.x86_64
+  libXau-1.0.9-8.el9.x86_64                               libXau-devel-1.0.9-8.el9.x86_64
+  libXext-1.3.4-8.el9.x86_64                              libXpm-3.5.13-10.el9.x86_64
+  libXpm-devel-3.5.13-10.el9.x86_64                       libXrender-0.9.10-16.el9.x86_64
+  libXt-1.2.0-6.el9.x86_64                                libblkid-devel-2.37.4-25.el9.x86_64
+  libffi-devel-3.4.2-8.el9.x86_64                         libgpg-error-devel-1.42-5.el9.x86_64
+  libicu-67.1-10.el9_6.x86_64                             libicu-devel-67.1-10.el9_6.x86_64
+  libjpeg-turbo-2.0.90-7.el9.x86_64                       libjpeg-turbo-devel-2.0.90-7.el9.x86_64
+  libmount-devel-2.37.4-25.el9.x86_64                     libpng-2:1.6.37-15.el9_8.2.x86_64
+  libpng-devel-2:1.6.37-15.el9_8.2.x86_64                 libselinux-devel-3.6-3.el9.x86_64
+  libsepol-devel-3.6-3.el9.x86_64                         libtiff-4.4.0-18.el9_8.x86_64
+  libtiff-devel-4.4.0-18.el9_8.x86_64                     libwebp-1.2.0-8.el9_3.x86_64
+  libwebp-devel-1.2.0-8.el9_3.x86_64                      libxcb-1.13.1-9.el9.x86_64
+  libxcb-devel-1.13.1-9.el9.x86_64                        libxml2-devel-2.9.13-14.el9_7.x86_64
+  libxslt-1.1.34-14.el9_8.1.x86_64                        libxslt-devel-1.1.34-14.el9_8.1.x86_64
+  openssl-devel-1:3.5.5-4.el9_8.x86_64                    pcre-cpp-8.44-4.el9.x86_64
+  pcre-devel-8.44-4.el9.x86_64                            pcre-utf16-8.44-4.el9.x86_64
+  pcre-utf32-8.44-4.el9.x86_64                            pcre2-devel-10.40-6.el9.x86_64
+  pcre2-utf16-10.40-6.el9.x86_64                          pcre2-utf32-10.40-6.el9.x86_64
+  perl-AutoSplit-5.74-481.1.el9_6.noarch                  perl-Benchmark-1.23-481.1.el9_6.noarch
+  perl-CPAN-Meta-2.150010-460.el9.noarch                  perl-CPAN-Meta-Requirements-2.140-461.el9.noarch
+  perl-CPAN-Meta-YAML-0.018-461.el9.noarch                perl-Devel-PPPort-3.62-4.el9.x86_64
+  perl-Encode-Locale-1.05-21.el9.noarch                   perl-ExtUtils-Command-2:7.60-3.el9.noarch
+  perl-ExtUtils-Constant-0.25-481.1.el9_6.noarch          perl-ExtUtils-Embed-1.35-481.1.el9_6.noarch
+  perl-ExtUtils-Install-2.20-4.el9.noarch                 perl-ExtUtils-MakeMaker-2:7.60-3.el9.noarch
+  perl-ExtUtils-Manifest-1:1.73-4.el9.noarch              perl-ExtUtils-ParseXS-1:3.40-460.el9.noarch
+  perl-Fedora-VSP-0.001-23.el9.noarch                     perl-File-Compare-1.100.600-481.1.el9_6.noarch
+  perl-File-Copy-2.34-481.1.el9_6.noarch                  perl-File-Find-1.37-481.1.el9_6.noarch
+  perl-I18N-Langinfo-0.19-481.1.el9_6.x86_64              perl-JSON-PP-1:4.06-4.el9.noarch
+  perl-Math-BigInt-1:1.9998.18-460.el9.noarch             perl-Math-Complex-1.59-481.1.el9_6.noarch
+  perl-Test-Harness-1:3.42-461.el9.noarch                 perl-Time-HiRes-4:1.9764-462.el9.x86_64
+  perl-devel-4:5.32.1-481.1.el9_6.x86_64                  perl-doc-5.32.1-481.1.el9_6.noarch
+  perl-generators-1.13-1.el9.noarch                       perl-locale-1.09-481.1.el9_6.noarch
+  perl-macros-4:5.32.1-481.1.el9_6.noarch                 perl-version-7:0.99.28-4.el9.x86_64
+  pixman-0.40.0-6.el9_3.x86_64                            python3-pyparsing-2.4.7-9.el9.noarch
+  sysprof-capture-devel-3.40.1-3.el9.x86_64               systemtap-sdt-devel-5.4-4.el9.x86_64
+  systemtap-sdt-dtrace-5.4-4.el9.x86_64                   xml-common-0.6.3-58.el9.noarch
+  xorg-x11-proto-devel-2024.1-1.el9.noarch                xz-devel-5.2.5-8.el9_0.x86_64
+  zlib-devel-1.2.11-40.el9.x86_64
+
+Complete!
+################### добавляем модуль в пакет 
+nginx_ldopts="$RPM_LD_FLAGS -Wl,-E"
+if ! ./configure \
+    --add-module=/root/ngx_brotli \
+    --prefix=%{_datadir}/nginx \
+    --sbin-path=%{_sbindir}/nginx \
+    --modules-path=%{nginx_moduledir} \
+    --conf-path=%{_sysconfdir}/nginx/nginx.conf \
+    --error-log-path=%{_localstatedir}/log/nginx/error.log \
+    --http-log-path=%{_localstatedir}/log/nginx/access.log \
+    --http-client-body-temp-path=%{_localstatedir}/lib/nginx/tmp/client_body \
+    --http-proxy-temp-path=%{_localstatedir}/lib/nginx/tmp/proxy \
+    --http-fastcgi-temp-path=%{_localstatedir}/lib/nginx/tmp/fastcgi \
+    --http-uwsgi-temp-path=%{_localstatedir}/lib/nginx/tmp/uwsgi \
+    --http-scgi-temp-path=%{_localstatedir}/lib/nginx/tmp/scgi \
+    --pid-path=/run/nginx.pid \
+    --lock-path=/run/lock/subsys/nginx \
+    --user=%{nginx_user} \
+    --group=%{nginx_user} \
+    --with-compat \
+    --with-debug \
+%if 0%{?with_aio}
+####################### Собираем пакет 
+[root@localhost SPECS]# rpmbuild -ba nginx.spec -D 'debug_package %{nil}'
+############## вывод большой добавляю только хвост
+Wrote: /root/rpmbuild/SRPMS/nginx-1.20.1-28.el9.3.alma.1.src.rpm
+Wrote: /root/rpmbuild/RPMS/x86_64/nginx-mod-stream-1.20.1-28.el9.3.alma.1.x86_64.rpm
+Wrote: /root/rpmbuild/RPMS/x86_64/nginx-1.20.1-28.el9.3.alma.1.x86_64.rpm
+Wrote: /root/rpmbuild/RPMS/x86_64/nginx-mod-mail-1.20.1-28.el9.3.alma.1.x86_64.rpm
+Wrote: /root/rpmbuild/RPMS/x86_64/nginx-mod-http-perl-1.20.1-28.el9.3.alma.1.x86_64.rpm
+Wrote: /root/rpmbuild/RPMS/x86_64/nginx-mod-http-image-filter-1.20.1-28.el9.3.alma.1.x86_64.rpm
+Wrote: /root/rpmbuild/RPMS/x86_64/nginx-mod-http-xslt-filter-1.20.1-28.el9.3.alma.1.x86_64.rpm
+Wrote: /root/rpmbuild/RPMS/noarch/nginx-filesystem-1.20.1-28.el9.3.alma.1.noarch.rpm
+Wrote: /root/rpmbuild/RPMS/noarch/nginx-all-modules-1.20.1-28.el9.3.alma.1.noarch.rpm
+Wrote: /root/rpmbuild/RPMS/x86_64/nginx-core-1.20.1-28.el9.3.alma.1.x86_64.rpm
+Wrote: /root/rpmbuild/RPMS/x86_64/nginx-mod-devel-1.20.1-28.el9.3.alma.1.x86_64.rpm
+Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.AfmHYb
++ umask 022
++ cd /root/rpmbuild/BUILD
++ cd nginx-1.20.1
++ /usr/bin/rm -rf /root/rpmbuild/BUILDROOT/nginx-1.20.1-28.el9.3.alma.1.x86_64
++ RPM_EC=0
+++ jobs -p
++ exit 0
+[root@localhost ~]# ll rpmbuild/RPMS/x86_64/
+total 2020
+-rw-r--r--. 1 root root   37964 Jul  1 16:55 nginx-1.20.1-28.el9.3.alma.1.x86_64.rpm
+-rw-r--r--. 1 root root 1037495 Jul  1 16:55 nginx-core-1.20.1-28.el9.3.alma.1.x86_64.rpm
+-rw-r--r--. 1 root root  762418 Jul  1 16:55 nginx-mod-devel-1.20.1-28.el9.3.alma.1.x86_64.rpm
+-rw-r--r--. 1 root root   21049 Jul  1 16:55 nginx-mod-http-image-filter-1.20.1-28.el9.3.alma.1.x86_64.rpm
+-rw-r--r--. 1 root root   32543 Jul  1 16:55 nginx-mod-http-perl-1.20.1-28.el9.3.alma.1.x86_64.rpm
+-rw-r--r--. 1 root root   19839 Jul  1 16:55 nginx-mod-http-xslt-filter-1.20.1-28.el9.3.alma.1.x86_64.rpm
+-rw-r--r--. 1 root root   55434 Jul  1 16:55 nginx-mod-mail-1.20.1-28.el9.3.alma.1.x86_64.rpm
+-rw-r--r--. 1 root root   82048 Jul  1 16:55 nginx-mod-stream-1.20.1-28.el9.3.alma.1.x86_64.rpm
+[root@localhost x86_64]# cp ~/rpmbuild/RPMS/noarch/* ~/rpmbuild/RPMS/x86_64/
+[root@localhost x86_64]# cd ~/rpmbuild/RPMS/x86_64
+[root@localhost x86_64]# ls
+nginx-1.20.1-28.el9.3.alma.1.x86_64.rpm              nginx-mod-http-image-filter-1.20.1-28.el9.3.alma.1.x86_64.rpm
+nginx-all-modules-1.20.1-28.el9.3.alma.1.noarch.rpm  nginx-mod-http-perl-1.20.1-28.el9.3.alma.1.x86_64.rpm
+nginx-core-1.20.1-28.el9.3.alma.1.x86_64.rpm         nginx-mod-http-xslt-filter-1.20.1-28.el9.3.alma.1.x86_64.rpm
+nginx-filesystem-1.20.1-28.el9.3.alma.1.noarch.rpm   nginx-mod-mail-1.20.1-28.el9.3.alma.1.x86_64.rpm
+nginx-mod-devel-1.20.1-28.el9.3.alma.1.x86_64.rpm    nginx-mod-stream-1.20.1-28.el9.3.alma.1.x86_64.rpm
+[root@localhost x86_64]#  yum localinstall *.rpm
+Last metadata expiration check: 0:32:05 ago on Wed Jul  1 16:44:55 2026.
+Dependencies resolved.
+===================================================================================================================
+ Package                             Architecture   Version                             Repository            Size
+===================================================================================================================
+Installing:
+ nginx                               x86_64         2:1.20.1-28.el9.3.alma.1            @commandline          37 k
+ nginx-all-modules                   noarch         2:1.20.1-28.el9.3.alma.1            @commandline         8.8 k
+ nginx-core                          x86_64         2:1.20.1-28.el9.3.alma.1            @commandline         1.0 M
+ nginx-filesystem                    noarch         2:1.20.1-28.el9.3.alma.1            @commandline          10 k
+ nginx-mod-devel                     x86_64         2:1.20.1-28.el9.3.alma.1            @commandline         745 k
+ nginx-mod-http-image-filter         x86_64         2:1.20.1-28.el9.3.alma.1            @commandline          21 k
+ nginx-mod-http-perl                 x86_64         2:1.20.1-28.el9.3.alma.1            @commandline          32 k
+ nginx-mod-http-xslt-filter          x86_64         2:1.20.1-28.el9.3.alma.1            @commandline          19 k
+ nginx-mod-mail                      x86_64         2:1.20.1-28.el9.3.alma.1            @commandline          54 k
+ nginx-mod-stream                    x86_64         2:1.20.1-28.el9.3.alma.1            @commandline          80 k
+Installing dependencies:
+ almalinux-logos-httpd               noarch         90.7-1.el9                          appstream             18 k
+
+Transaction Summary
+===================================================================================================================
+Install  11 Packages
+
+Total size: 2.0 M
+Total download size: 18 k
+Installed size: 9.5 M
+Is this ok [y/N]: y
+Downloading Packages:
+almalinux-logos-httpd-90.7-1.el9.noarch.rpm                                         42 kB/s |  18 kB     00:00
+-------------------------------------------------------------------------------------------------------------------
+Total                                                                               17 kB/s |  18 kB     00:01
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                           1/1
+  Running scriptlet: nginx-filesystem-2:1.20.1-28.el9.3.alma.1.noarch                                         1/11
+  Installing       : nginx-filesystem-2:1.20.1-28.el9.3.alma.1.noarch                                         1/11
+  Installing       : nginx-core-2:1.20.1-28.el9.3.alma.1.x86_64                                               2/11
+  Installing       : almalinux-logos-httpd-90.7-1.el9.noarch                                                  3/11
+  Installing       : nginx-2:1.20.1-28.el9.3.alma.1.x86_64                                                    4/11
+  Running scriptlet: nginx-2:1.20.1-28.el9.3.alma.1.x86_64                                                    4/11
+  Installing       : nginx-mod-http-image-filter-2:1.20.1-28.el9.3.alma.1.x86_64                              5/11
+  Running scriptlet: nginx-mod-http-image-filter-2:1.20.1-28.el9.3.alma.1.x86_64                              5/11
+  Installing       : nginx-mod-http-perl-2:1.20.1-28.el9.3.alma.1.x86_64                                      6/11
+  Running scriptlet: nginx-mod-http-perl-2:1.20.1-28.el9.3.alma.1.x86_64                                      6/11
+  Installing       : nginx-mod-http-xslt-filter-2:1.20.1-28.el9.3.alma.1.x86_64                               7/11
+  Running scriptlet: nginx-mod-http-xslt-filter-2:1.20.1-28.el9.3.alma.1.x86_64                               7/11
+  Installing       : nginx-mod-mail-2:1.20.1-28.el9.3.alma.1.x86_64                                           8/11
+  Running scriptlet: nginx-mod-mail-2:1.20.1-28.el9.3.alma.1.x86_64                                           8/11
+  Installing       : nginx-mod-stream-2:1.20.1-28.el9.3.alma.1.x86_64                                         9/11
+  Running scriptlet: nginx-mod-stream-2:1.20.1-28.el9.3.alma.1.x86_64                                         9/11
+  Installing       : nginx-all-modules-2:1.20.1-28.el9.3.alma.1.noarch                                       10/11
+  Installing       : nginx-mod-devel-2:1.20.1-28.el9.3.alma.1.x86_64                                         11/11
+  Running scriptlet: nginx-mod-devel-2:1.20.1-28.el9.3.alma.1.x86_64                                         11/11
+  Verifying        : almalinux-logos-httpd-90.7-1.el9.noarch                                                  1/11
+  Verifying        : nginx-2:1.20.1-28.el9.3.alma.1.x86_64                                                    2/11
+  Verifying        : nginx-all-modules-2:1.20.1-28.el9.3.alma.1.noarch                                        3/11
+  Verifying        : nginx-core-2:1.20.1-28.el9.3.alma.1.x86_64                                               4/11
+  Verifying        : nginx-filesystem-2:1.20.1-28.el9.3.alma.1.noarch                                         5/11
+  Verifying        : nginx-mod-devel-2:1.20.1-28.el9.3.alma.1.x86_64                                          6/11
+  Verifying        : nginx-mod-http-image-filter-2:1.20.1-28.el9.3.alma.1.x86_64                              7/11
+  Verifying        : nginx-mod-http-perl-2:1.20.1-28.el9.3.alma.1.x86_64                                      8/11
+  Verifying        : nginx-mod-http-xslt-filter-2:1.20.1-28.el9.3.alma.1.x86_64                               9/11
+  Verifying        : nginx-mod-mail-2:1.20.1-28.el9.3.alma.1.x86_64                                          10/11
+  Verifying        : nginx-mod-stream-2:1.20.1-28.el9.3.alma.1.x86_64                                        11/11
+
+Installed:
+  almalinux-logos-httpd-90.7-1.el9.noarch                      nginx-2:1.20.1-28.el9.3.alma.1.x86_64
+  nginx-all-modules-2:1.20.1-28.el9.3.alma.1.noarch            nginx-core-2:1.20.1-28.el9.3.alma.1.x86_64
+  nginx-filesystem-2:1.20.1-28.el9.3.alma.1.noarch             nginx-mod-devel-2:1.20.1-28.el9.3.alma.1.x86_64
+  nginx-mod-http-image-filter-2:1.20.1-28.el9.3.alma.1.x86_64  nginx-mod-http-perl-2:1.20.1-28.el9.3.alma.1.x86_64
+  nginx-mod-http-xslt-filter-2:1.20.1-28.el9.3.alma.1.x86_64   nginx-mod-mail-2:1.20.1-28.el9.3.alma.1.x86_64
+  nginx-mod-stream-2:1.20.1-28.el9.3.alma.1.x86_64
+
+Complete!
+[root@localhost x86_64]#  systemctl start nginx
+[root@localhost x86_64]# systemctl status nginx
+● nginx.service - The nginx HTTP and reverse proxy server
+     Loaded: loaded (/usr/lib/systemd/system/nginx.service; disabled; preset: disabled)
+     Active: active (running) since Wed 2026-07-01 17:17:34 +05; 4s ago
+    Process: 50895 ExecStartPre=/usr/bin/rm -f /run/nginx.pid (code=exited, status=0/SUCCESS)
+    Process: 50896 ExecStartPre=/usr/sbin/nginx -t (code=exited, status=0/SUCCESS)
+    Process: 50897 ExecStart=/usr/sbin/nginx (code=exited, status=0/SUCCESS)
+   Main PID: 50898 (nginx)
+      Tasks: 5 (limit: 23098)
+     Memory: 7.5M (peak: 8.0M)
+        CPU: 172ms
+     CGroup: /system.slice/nginx.service
+             ├─50898 "nginx: master process /usr/sbin/nginx"
+             ├─50899 "nginx: worker process"
+             ├─50900 "nginx: worker process"
+             ├─50901 "nginx: worker process"
+             └─50902 "nginx: worker process"
+
+Jul 01 17:17:34 localhost.localdomain systemd[1]: Starting The nginx HTTP and reverse proxy server...
+Jul 01 17:17:34 localhost.localdomain nginx[50896]: nginx: the configuration file /etc/nginx/nginx.conf syntax is >
+Jul 01 17:17:34 localhost.localdomain nginx[50896]: nginx: configuration file /etc/nginx/nginx.conf test is succes>
+Jul 01 17:17:34 localhost.localdomain systemd[1]: Started The nginx HTTP and reverse proxy server.
